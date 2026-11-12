@@ -1,0 +1,29 @@
+digraph RunSprintActivity {
+  graph [bgcolor="white", pad="0.25", ranksep="0.42", nodesep="0.45", splines="polyline"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica", fontsize="9", color="#1f4e79", fillcolor="#e8f0f7"];
+  edge [fontname="Helvetica", fontsize="8", color="#546e7a", arrowsize="0.65"];
+
+  start [shape="circle", width="0.18", fixedsize="true", label="", style="filled", fillcolor="#263238", color="#263238"];
+  select [label="Select Pending task"];
+  begin [label="Set deadline and start"];
+  calculate [label="Calculate remaining time\nfrom current time and deadline"];
+  zero [shape="diamond", label="Time\nzero?", style="filled", fillcolor="#fff4df", color="#9a6700"];
+  action [shape="diamond", label="User\naction?", style="filled", fillcolor="#fff4df", color="#9a6700"];
+  pause [label="Pause and retain\nremaining time"];
+  resume [label="Resume with new deadline"];
+  reset [label="Reset to task estimate"];
+  complete [label="Complete task and\nupdate progress"];
+  end [shape="doublecircle", width="0.22", fixedsize="true", label="", style="filled", fillcolor="#263238", color="#263238"];
+
+  start -> select -> begin -> calculate -> zero;
+  zero -> end [label=" yes"];
+  zero -> action [label=" no"];
+  action -> calculate [label=" none"];
+  action -> pause [label=" pause"];
+  pause -> resume [label=" resume"];
+  resume -> calculate;
+  action -> reset [label=" reset"];
+  reset -> end;
+  action -> complete [label=" complete"];
+  complete -> end;
+}

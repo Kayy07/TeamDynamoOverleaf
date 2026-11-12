@@ -1,0 +1,143 @@
+% Senior Design (423-IDE401 / 424-IDE402) Core Report Template
+% Adapted from the System and Software Architecture Design Template.
+\documentclass[12pt]{cornell}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{ltablex}
+\keepXColumns
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{pdflscape}
+\usepackage{tcolorbox}
+\usepackage{makeidx}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[acronym,toc]{glossaries}
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\addbibresource{bibfile.bib}
+\makeindex
+\makeglossaries
+\input{dsnGlossary.tex}
+
+\definecolor{dsnBlue}{RGB}{31,78,121}
+\definecolor{dsnGreen}{RGB}{46,125,50}
+\definecolor{dsnRed}{RGB}{126,45,45}
+\definecolor{dsnGray}{RGB}{90,90,90}
+\definecolor{dsnLightBlue}{RGB}{232,240,247}
+
+% Replace the values below when starting a project.
+\newcommand{\ProjectName}{Dynamo Website}
+\newcommand{\DocumentVersion}{1.1.4}
+\newcommand{\DocumentStatus}{Final Submission}
+\newcommand{\DocumentOwner}{Team Dynamo \\ Jacky Lei, Kayla Holmes, Robert Galletta, Nica Saoi}
+\newcommand{\Organization}{Stevens Institute of Technology}
+\newcommand{\DocumentDate}{October 30, 2026}
+\newcommand{\VERSION}{Version \DocumentVersion}
+
+\hypersetup{
+  pdftitle={Dynamo - Senior Design Core Report},
+  pdfauthor={[Senior Design Team]},
+  pdfcreator={Senior Design Core Report Template},
+  pdfsubject={Senior Design (423-IDE401 / 424-IDE402) core report},
+  pdfkeywords={senior design, engineering design, requirements, prototype, evaluation}
+}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\setlength{\LTpre}{6pt}
+\setlength{\LTpost}{6pt}
+
+\newcommand{\ChapterLabel}[1]{\label{Chapter:#1}}
+\newcommand{\ChapterRef}[1]{\hyperref[Chapter:#1]{Chapter~\ref*{Chapter:#1}}}
+\newcommand{\ArtifactLabel}[2]{\phantomsection\label{#1:#2}}
+\newcommand{\ArtifactID}[2]{\texttt{#2}\ArtifactLabel{#1}{#2}\index{#1!#2}}
+\newcommand{\ArtifactRef}[2]{\hyperref[#1:#2]{\texttt{#2}}}
+\newcommand{\UserStoryID}[1]{\ArtifactID{UserStory}{#1}}
+\newcommand{\UserStoryRef}[1]{\ArtifactRef{UserStory}{#1}}
+\newcommand{\RequirementID}[1]{\ArtifactID{Requirement}{#1}}
+\newcommand{\RequirementRef}[1]{\ArtifactRef{Requirement}{#1}}
+\newcommand{\UseCaseID}[1]{\ArtifactID{UseCase}{#1}}
+\newcommand{\UseCaseRef}[1]{\ArtifactRef{UseCase}{#1}}
+\newcommand{\ArchitectureID}[1]{\ArtifactID{Architecture}{#1}}
+\newcommand{\ArchitectureRef}[1]{\ArtifactRef{Architecture}{#1}}
+\newcommand{\TestCaseID}[1]{\ArtifactID{TestCase}{#1}}
+\newcommand{\TestCaseRef}[1]{\ArtifactRef{TestCase}{#1}}
+\newcommand{\VerificationID}[1]{\ArtifactID{Verification}{#1}}
+\newcommand{\VerificationRef}[1]{\ArtifactRef{Verification}{#1}}
+\newcommand{\ValidationID}[1]{\ArtifactID{Validation}{#1}}
+\newcommand{\ValidationRef}[1]{\ArtifactRef{Validation}{#1}}
+\newcommand{\StatusPass}{\textbf{\footnotesize\textcolor{dsnGreen}{PASS}}}
+\newcommand{\StatusPending}{\textbf{\footnotesize\textcolor{dsnGray}{PENDING}}}
+\newcommand{\StatusFail}{\textbf{\footnotesize\textcolor{dsnRed}{FAIL}}}
+\newcommand{\ReqStatusOpen}{\textbf{\textcolor{dsnGray}{Open}}}
+\newcommand{\ReqStatusInProgress}{\textbf{\textcolor{dsnBlue}{In Progress}}}
+\newcommand{\ReqStatusDone}{\textbf{\textcolor{dsnGreen}{Done}}}
+\newcommand{\ReqStatusRetired}{\textbf{\textcolor{dsnGray}{Retired}}}
+\newcommand{\NoVersion}{\ensuremath{\varnothing}}
+\newtcolorbox{dsnNote}[1][]{colback=dsnLightBlue,colframe=dsnBlue,boxrule=0.6pt,arc=1mm,title=#1}
+\newtcolorbox{dsnMilestone}[1][]{colback=white,colframe=dsnRed,boxrule=0.8pt,arc=1mm,title=#1,fonttitle=\bfseries\color{dsnRed}}
+
+\changenormalspacing{\singlespacing}
+
+\begin{document}
+
+\pagenumbering{roman}
+\singlespacing
+\include{prologue}
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\lhead{\small \thechapter}
+\chead{\small\nouppercase{\leftmark}}
+\rhead{\small\thepage}
+\lfoot{\small\ProjectName}
+\cfoot{\small\copyright\ \Organization}
+\rfoot{\small\VERSION}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\include{dsnIntroduction}
+\include{sdPartI}
+\input{sdPartII}
+%\include{sdPartIII}
+
+\appendix
+\include{sdAppendices}
+%\include{dsnDocumentGuide}
+%\include{dsnAIAgentGuide}
+%\include{dsnAIPromptLog}
+
+% \bibliographystyle{IEEEtran}
+% \nocite{ISO15288,ISO12207,ISO29148}
+% \bibliography{dsnReferences}
+\printbibliography
+
+\glsaddall
+\printglossaries
+\cleardoublepage
+\phantomsection
+\ChapterLabel{Index}
+\addcontentsline{toc}{chapter}{Index}
+\markboth{Index}{Index}
+\printindex
+
+\end{document}

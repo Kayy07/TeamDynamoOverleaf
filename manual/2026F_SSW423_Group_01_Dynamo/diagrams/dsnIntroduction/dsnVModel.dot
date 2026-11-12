@@ -1,0 +1,23 @@
+digraph VModel {
+  graph [bgcolor="white", pad="0.25", nodesep="0.50", ranksep="0.48", splines="polyline"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica", fontsize="10", color="#1f4e79", fillcolor="#e8f0f7", margin="0.12,0.08"];
+  edge [fontname="Helvetica", fontsize="9", color="#4a6572", arrowsize="0.7"];
+
+  needs [label="Stakeholder Needs"];
+  requirements [label="System and Software\nRequirements"];
+  architecture [label="Architecture"];
+  design [label="Detailed Design"];
+  code [label="Implementation", fillcolor="#f3f3f3", color="#555555"];
+  unit [label="Unit Tests", fillcolor="#edf6ed", color="#2e7d32"];
+  integration [label="Integration Tests", fillcolor="#edf6ed", color="#2e7d32"];
+  verification [label="System Verification", fillcolor="#edf6ed", color="#2e7d32"];
+  validation [label="Stakeholder Validation", fillcolor="#edf6ed", color="#2e7d32"];
+
+  needs -> requirements -> architecture -> design -> code [label=" define", color="#1f4e79"];
+  code -> unit -> integration -> verification -> validation [label=" evidence", color="#2e7d32"];
+
+  { rank=same; needs; validation; needs -> validation [style="dashed", dir="none", color="#8293a0", label="  acceptance  "]; }
+  { rank=same; requirements; verification; requirements -> verification [style="dashed", dir="none", color="#8293a0", label="  compliance  "]; }
+  { rank=same; architecture; integration; architecture -> integration [style="dashed", dir="none", color="#8293a0", label="  integration  "]; }
+  { rank=same; design; unit; design -> unit [style="dashed", dir="none", color="#8293a0", label="  correctness  "]; }
+}

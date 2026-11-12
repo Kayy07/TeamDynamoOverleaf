@@ -1,0 +1,44 @@
+\chapter{Tests}
+\ChapterLabel{Tests}
+\section{Planned Test Cases}
+The tests below are proposed verification procedures, not recorded execution results. Evidence, dates, environments, and actual pass/fail outcomes must be added after execution.
+\small
+\begin{longtable}{p{1.5cm}p{2.8cm}p{6.0cm}p{5.0cm}}
+\caption{Planned Dynamo Test Cases\label{Table:TestCaseExamples}}\\
+\toprule
+\textbf{ID} & \textbf{Mapped requirement} & \textbf{Procedure} & \textbf{Expected result}\\
+\midrule\endfirsthead
+\toprule\textbf{ID} & \textbf{Mapped requirement} & \textbf{Procedure} & \textbf{Expected result}\\\midrule\endhead
+\TestCaseID{TC-001} & \RequirementRef{REQ-D-001} & As an authorized researcher, upload a supported research artifact and provide metadata. & The artifact is saved, linked to the project, and can be retrieved.\\
+\TestCaseID{TC-002} & \RequirementRef{REQ-Q-002} & Upload an artifact, then submit a modified version and inspect version history. & Two timestamped versions exist and the previous version remains accessible.\\
+\TestCaseID{TC-003} & \RequirementRef{REQ-Q-003} & Upload a known binary file, retrieve it, and compare cryptographic hashes. & Uploaded and retrieved file hashes match.\\
+\TestCaseID{TC-004} & \RequirementRef{REQ-S-002} & Attempt to edit an artifact as an authorized whitelisted user and a non-whitelisted user. & The authorized edit succeeds; the unauthorized edit is denied.\\
+\TestCaseID{TC-005} & \RequirementRef{REQ-D-007} & Enter a known valid DOI and inspect fetched bibliographic metadata. & Available title and author information is populated and can be confirmed before saving.\\
+\TestCaseID{TC-006} & \RequirementRef{REQ-F-003} & Register a published paper within a research project and retrieve its record. & The paper record is accessible from the project.\\
+\TestCaseID{TC-007} & \RequirementRef{REQ-D-008} & Upload files at the approved 1 GB limit and above the limit. & The at-limit upload is accepted subject to system resources; larger uploads are rejected.\\
+\TestCaseID{TC-008} & \RequirementRef{REQ-C-001} & Run core use-case tests in every approved browser and deployment environment. & Core workflows operate in the approved baseline.\\
+\TestCaseID{TC-009} & \RequirementRef{REQ-B-001} & Open a published project as a public visitor and inspect available artifacts. & The research paper and any publicly shared datasets or code are accessible.\\
+\TestCaseID{TC-010} & \RequirementRef{REQ-Q-001} & Ask a researcher without programming expertise to upload and manage an artifact using the browser. & The researcher completes the workflow without writing code.\\
+\TestCaseID{TC-011} & \RequirementRef{REQ-D-006} & Use the documented inputs, parameters, code, and environment to attempt reproduction. & The required reproduction materials can be located; any missing materials are reported.\\
+\TestCaseID{TC-012} & \RequirementRef{REQ-C-002} & Access the artifact-management workflow using a browser on a machine without developer tools. & The workflow runs without installing native software.\\
+\TestCaseID{TC-013} & \RequirementRef{REQ-C-003} & Run the critical project tasks across every approved OS and browser combination. & Core tasks are available across the approved combinations.\\
+\TestCaseID{TC-014} & \RequirementRef{REQ-B-002} & Open an experiment log and review run parameters and recorded outputs. & Runs, associated parameters, and results are accessible.\\
+\TestCaseID{TC-015} & \RequirementRef{REQ-B-003} & Open a documented scientific concept and inspect its definitions and units. & The corresponding explanations, variables, and units are displayed.\\
+\TestCaseID{TC-016} & \RequirementRef{REQ-B-004} & Select a research figure and inspect its data and analysis links. & The figure and its supporting sources or explicit missing-data notices appear.\\
+\TestCaseID{TC-017} & \RequirementRef{REQ-B-005} & Select reproduction guidance for a published result. & Available simulation instructions and input references are displayed.\\
+\TestCaseID{TC-018} & \RequirementRef{REQ-F-001} & Open the concept wiki and select an entry. & The selected scientific concept is displayed.\\
+\TestCaseID{TC-019} & \RequirementRef{REQ-F-002} & Open a project progress log and inspect entries. & Available research progress entries are displayed.\\
+\TestCaseID{TC-020} & \RequirementRef{REQ-I-002} & Upload a supported research video and open it from the project view. & The video can be uploaded and displayed.\\
+\TestCaseID{TC-021} & \RequirementRef{REQ-S-003} & Log in with valid credentials and then with an invalid password. & Only valid credentials establish an authenticated session.\\
+\TestCaseID{TC-022} & \RequirementRef{REQ-S-004} & Visit a public paper page without signing in. & Public paper content is accessible without an account.\\
+\TestCaseID{TC-023} & \RequirementRef{REQ-S-005} & Request a password recovery using a registered account. & The system supports a secure account-recovery flow.\\
+\TestCaseID{TC-024} & \RequirementRef{REQ-Q-004} & Measure retrieval time of reference artifacts under the agreed test workload. & Each measured retrieval completes within five seconds.\\
+\TestCaseID{TC-025} & \RequirementRef{REQ-Q-005} & Open project documentation independently of the original research-paper document. & Additional artifacts are accessible without changing the original paper.\\
+\TestCaseID{TC-026} & \RequirementRef{REQ-D-003} & Inspect identifiers for datasets generated from distinct experiment parameters. & Output datasets have identifiers traceable to their generation parameters.\\
+\TestCaseID{TC-027} & \RequirementRef{REQ-D-004} & Open the provenance record for a simulation dataset. & Software versions, configuration, and environment metadata are recorded.\\
+\TestCaseID{TC-028} & \RequirementRef{REQ-D-005} & Trace a derived result to the data-processing procedure. & The applicable transformation and analysis procedures are available.\\
+\TestCaseID{TC-029} & \RequirementRef{REQ-I-001} & Perform artifact creation and editing using only browser controls. & No coding or local software installation is necessary.\\
+\TestCaseID{TC-030} & \RequirementRef{REQ-S-001} & Attempt create, edit, and delete operations with and without authorization. & Only authorized operations succeed.\\
+\bottomrule
+\end{longtable}
+\normalsize

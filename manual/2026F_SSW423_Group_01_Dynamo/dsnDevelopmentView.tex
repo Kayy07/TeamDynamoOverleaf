@@ -1,0 +1,6 @@
+\chapter{Development View}
+\ChapterLabel{DevelopmentView}
+\section{How to Use This Chapter}
+Show how source code, modules, services, libraries, and build artifacts are organized. State dependency rules so that implementers do not create forbidden coupling.
+\section{Example}
+Organize a service into presentation/API, application workflow, domain model, and infrastructure adapters. The API calls application services; application services depend on domain abstractions; infrastructure implements those abstractions. Domain logic must not depend on the web framework or database driver.

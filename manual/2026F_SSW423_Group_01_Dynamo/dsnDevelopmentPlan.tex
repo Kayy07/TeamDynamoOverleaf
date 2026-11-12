@@ -1,0 +1,36 @@
+\chapter{Development Plan}
+\ChapterLabel{DevelopmentPlan}
+
+The Dynamo website will be developed using an iterative approach. Instead of building the entire system at once, the team will work on smaller features that can be designed, tested, and improved over time. This gives the team room to respond to stakeholder feedback and update requirements as the project develops.
+
+\section{Development Approach}
+
+Development of the first prototype will first focus on the main workflows that support Dynamo's goals of
+improving the approachability, traceability, and reproducibility of research. This includes creating and discovering research projects, managing research artifacts, and connecting information such as publications, figures, datasets, and experiments.
+
+To enable a smooth transition from the prototype to the final product, we will use a NoSQL database such as ScyllaDB. ScyllaDB will allow the project to be scalable while being flexible in the beginning stages of development due to the lack of a fixed schema. 
+
+For the first prototype, we will have everything hosted locally in Docker containers. In following prototypes we will iteratively move to a more scalable configuration. 
+
+User stories, requirements, and use cases will continue to be refined as the team receives more feedback. These development artifacts will be tracked such that implemented features can be linked back to the needs that
+motivated them.
+
+
+\section{Development Process}
+
+As we follow an iterative approach, we will be rapidly moving through the V-model of software development. In each iteration, we will analyze, refine, and/or add requirements, update the architecture, modify/add code, test, and deploy. To automate movement through the V-model, we will incorporate some DevOps tools such as GitHub Actions, Git, and Docker. When possible, we aim to use a test-driven approach for development to ensure expectations of the code itself are clear. 
+
+Team members will divide work across areas such as frontend development, backend development, database design, testing, documentation, and stakeholder research.
+
+Progress will be coordinated through regular team meetings and tracked development tasks.
+
+\section{Testing and Project Changes}
+
+Testing will take place throughout development. Functional testing will be used to check that features satisfy their requirements and use cases, while integration testing will confirm that major system components work together correctly.
+
+Changes to requirements or project scope will be reviewed based on their importance, technical impact, dependencies, and available development time. 
+
+%\section{How to Use This Chapter}
+%Describe governance, roles, milestones, change control, and risks. Adapt the plan to the lifecycle the team will actually follow.
+%\section{Example}
+%The product owner prioritizes outcomes; the architect owns significant design decisions; developers implement approved work; and the test lead retains evidence. Typical gates are needs reviewed, requirements baselined, architecture approved, evidence complete, and release approved. Example risk: an external service may be unavailable; define the failure response and test it before release.

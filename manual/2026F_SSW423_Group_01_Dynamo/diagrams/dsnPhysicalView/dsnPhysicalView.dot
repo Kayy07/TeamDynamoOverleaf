@@ -1,0 +1,16 @@
+digraph PhysicalView {
+  graph [bgcolor="white", pad="0.25", ranksep="0.75", nodesep="0.55", splines="polyline"];
+  node [shape="box3d", style="filled", fontname="Helvetica", fontsize="10", color="#455a64", fillcolor="#f7f7f7"];
+  edge [fontname="Helvetica", fontsize="9", color="#546e7a", arrowsize="0.7"];
+
+  device [label="Student Device\nLaptop or desktop"];
+  files [shape="folder", label="Local release folder\nHTML, CSS, JavaScript, tests", fillcolor="#fff4df", color="#9a6700"];
+  browser [label="Browser Process\nDOM + JavaScript + timers", fillcolor="#e8f0f7", color="#1f4e79"];
+  storage [shape="cylinder", label="Browser Profile\nlocalStorage", fillcolor="#edf6ed", color="#2e7d32"];
+  network [shape="box", style="dashed", label="Network\nNot used", fillcolor="white", color="#b71c1c", fontcolor="#b71c1c"];
+
+  device -> files [label=" contains"];
+  files -> browser [label=" opened by"];
+  browser -> storage [label=" reads/writes"];
+  browser -> network [label=" no requests", style="dashed", color="#b71c1c"];
+}

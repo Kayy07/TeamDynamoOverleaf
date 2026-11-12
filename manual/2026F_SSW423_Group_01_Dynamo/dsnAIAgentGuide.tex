@@ -1,0 +1,332 @@
+\chapter{AI Agent Usage Guide}
+\ChapterLabel{AIAgentGuide}
+\index{AI agent}
+\index{AI agent!context routing}
+\index{AI agent!example prompts}
+\index{AI agent!human review}
+\index{Appendix!AI Agent Usage Guide}
+
+\section{How to Use This Appendix}
+This appendix is the entry point for an AI agent that creates, reviews, or
+maintains this architecture specification. The agent shall read this file
+first, identify the requested task in
+\hyperref[Table:AITaskRouting]{the task-routing table}, and load only the
+authoritative sources listed for that task. It shall expand the context when a
+referenced dependency, cross-cutting decision, or inconsistency requires it.
+
+This appendix replaces separate AI-oriented Markdown instructions. Its routing
+tables, context packs, workflows, prompts, and checklists are maintained as
+LaTeX so they remain visible in the architecture book and versioned with the
+specification.
+
+\section{Governing Principles}
+\index{source of truth}
+The authored LaTeX files and editable diagram sources are the source of truth.
+The generated PDF is a review artifact and shall not be edited directly. The
+agent shall preserve one authoritative location for each fact and use links
+instead of duplicating content across chapters.
+
+An AI agent is a drafting, analysis, consistency-checking, and build assistant.
+It shall use supplied project evidence, identify missing information, expose
+material assumptions, and distinguish proposals from approved decisions. It
+shall not invent requirements approval, implementation status, test results,
+verification evidence, validation evidence, waivers, or release authorization.
+
+\section{AI Quick Start}
+\label{Section:AIQuickStart}
+\index{AI agent!quick start}
+
+\begin{enumerate}
+\item Read this appendix and identify the requested outcome.
+\item Select the closest entry in
+\hyperref[Table:AITaskRouting]{the task-routing table}.
+\item Read the listed primary files and the applicable context pack. Read
+\texttt{dsnManual.tex} when document metadata, macros, inclusion order, or
+build structure is affected.
+\item Inspect available project evidence and report conflicts, missing facts,
+and consequential assumptions. Ask for a human decision when an answer would
+materially change scope, architecture, safety, security, cost, schedule, or
+release readiness.
+\item Make narrowly scoped changes in the authoritative files. Preserve stable
+IDs and update every affected reciprocal mapping.
+\item Add a linked document-history entry for an approved document change and
+record material AI interactions in \ChapterRef{AIPromptLog}.
+\item Run the complete build, inspect the log, render affected PDF pages, and
+complete \hyperref[Table:AICompletionChecklist]{the completion checklist}.
+\end{enumerate}
+
+\section{Task Routing}
+\index{AI agent!task routing}
+The file lists below are minimum starting contexts, not permission to ignore a
+dependency discovered during the task. A task that changes an artifact shall
+also inspect every register that contains a reciprocal mapping to that
+artifact.
+
+\small
+\begin{tabularx}{\linewidth}{L{4.0cm}Y}
+\caption{AI Task-Routing Table\label{Table:AITaskRouting}}\\
+\toprule
+\textbf{Task} & \textbf{Minimum Authoritative Sources}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\small\itshape AI Task-Routing Table (continued)}\\
+\toprule
+\textbf{Task} & \textbf{Minimum Authoritative Sources}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Initialize a project & \texttt{dsnManual.tex}, \texttt{prologue.tex}, \texttt{dsnIntroduction.tex}, \texttt{dsnDevelopmentPlan.tex}, \texttt{dsnSystemContext.tex}, and the supplied project evidence.\\
+Develop user stories & \texttt{dsnSystemContext.tex}, \texttt{dsnUserStories.tex}, \texttt{dsnRequirements.tex}, and stakeholder evidence.\\
+Add or change requirements & \texttt{dsnUserStories.tex}, \texttt{dsnRequirements.tex}, \texttt{dsnUseCases.tex}, \texttt{dsnTests.tex}, \texttt{dsnTraceability.tex}, \texttt{dsnVerification.tex}, and \texttt{dsnGlossary.tex}.\\
+Add or change use cases & \texttt{dsnUserStories.tex}, \texttt{dsnRequirements.tex}, \texttt{dsnUseCases.tex}, \texttt{dsnTests.tex}, and \texttt{dsnTraceability.tex}.\\
+Develop or change architecture & \texttt{dsnSystemContext.tex}, \texttt{dsnRequirements.tex}, \texttt{dsnArchitectureOverview.tex}, and the affected interface, logical, process, development, physical, or implementation chapters and diagrams.\\
+Add or change tests & \texttt{dsnRequirements.tex}, \texttt{dsnUseCases.tex}, \texttt{dsnTests.tex}, \texttt{dsnTraceability.tex}, \texttt{dsnVerification.tex}, and \texttt{dsnTestEvidence.tex}.\\
+Perform verification & \texttt{dsnRequirements.tex}, \texttt{dsnTests.tex}, \texttt{dsnTraceability.tex}, \texttt{dsnVerification.tex}, and controlled test evidence.\\
+Perform validation & \texttt{dsnUserStories.tex}, \texttt{dsnUseCases.tex}, \texttt{dsnValidation.tex}, and controlled stakeholder evidence.\\
+Prepare a release & \texttt{dsnRequirements.tex}, \texttt{dsnTraceability.tex}, \texttt{dsnVerification.tex}, \texttt{dsnValidation.tex}, \texttt{dsnRelease.tex}, and controlled release evidence.\\
+Review consistency & All registers containing the affected artifact types, \texttt{dsnGlossary.tex}, \texttt{dsnDocumentHistory.tex}, and \texttt{dsnManual.tex}.\\
+Compile or troubleshoot & \texttt{dsnManual.tex}, \texttt{dsnDocumentGuide.tex}, the affected chapter, its diagram sources, and the build log.\\
+\end{tabularx}
+\normalsize
+
+\section{Task-Specific Context Packs}
+\index{AI agent!context pack}
+A context pack is a reading boundary within this appendix, not a separate file.
+Use the applicable pack together with the task-routing entry.
+
+\subsection{Requirements Context}
+Establish the system boundary and stakeholder need before proposing a
+requirement. Keep each requirement singular, feasible, unambiguous, and
+verifiable. Classify its primary family or subtype, write binding behavior with
+\textbf{shall}, assign one \gls{must}, \gls{should}, \gls{could}, or
+\gls{would} priority, assign one lifecycle status, and map it to at least one
+use case and one test case. A requirement may be marked Done only when its
+mapped tests pass, verification is complete, traceability is current, and a
+controlled implementation version is known.
+
+\subsection{Use-Case Context}
+Start from an actor goal and a system boundary. Give each use case its own
+table, identify participating actors, preconditions, trigger, success outcome,
+main flow, alternate and exception flows, postconditions, mapped requirements,
+and mapped tests. Describe externally observable interaction rather than
+internal implementation detail. Maintain reciprocal mappings to every related
+requirement.
+
+\subsection{Architecture Context}
+Trace each architectural decision to requirements, quality attributes,
+constraints, risks, and interfaces. Identify alternatives and explain the
+trade-off that selected the proposed structure. Keep the context, logical,
+process, development, physical, interface, and implementation views consistent.
+Update editable diagram sources and regenerate their rendered images.
+
+\subsection{Testing and Evidence Context}
+Derive tests from requirements and use cases. Define preconditions, inputs,
+procedure, expected result, and retained evidence. A test definition is not a
+test result. Verification records objective compliance with requirements;
+validation records whether stakeholder needs are satisfied in intended use.
+Never create passing evidence or approval from an expected result.
+
+\subsection{Release Context}
+Review open, in-progress, done, and retired requirements; unresolved defects;
+verification and validation results; operational readiness; migration and
+rollback provisions; known limitations; and required approvals. Report a gap
+instead of treating missing evidence as acceptance. Only an authorized human
+may approve release.
+
+\subsection{Document-Authoring Context}
+Follow \ChapterRef{DocumentGuide} for file naming, LaTeX conventions, diagrams,
+installation, and builds. Update the glossary and index when introducing a
+controlled term. Update document history with a link to the changed location.
+Do not edit generated auxiliary files or the PDF directly.
+
+\section{Mandatory Consistency Rules}
+\index{AI agent!consistency rules}
+
+\begin{enumerate}
+\item Preserve every stable ID. Do not reuse an ID belonging to a retired or
+deleted proposal.
+\item Use \textbf{shall} for binding requirements. Use priority terms only in
+the Priority field and with the definitions in the glossary.
+\item Give every requirement a priority, status, In Version value, use-case
+mapping, and test-case mapping.
+\item Enter \NoVersion\ when a requirement is not Done and no completed
+implementation version applies.
+\item Maintain reciprocal mappings among user stories, requirements, use
+cases, tests, traceability, verification, and validation.
+\item Do not copy one controlled statement into several authoritative
+locations. Link to its stable ID.
+\item Retain retired requirements and their history. Record the rationale and
+replacement when applicable.
+\item Use project evidence for factual claims. Label an unsupported suggestion
+as a proposal and report the evidence needed to decide it.
+\item Link every document-history entry to the location where the change
+occurred.
+\item Compile after structural, cross-reference, glossary, index, diagram, or
+table changes and visually inspect the affected pages.
+\end{enumerate}
+
+\section{Standard AI Workflows}
+\label{Section:AIArchitectureWorkflow}
+\index{AI agent!architecture workflow}
+
+\subsection{Initialize a Project}
+Replace project metadata and bracketed placeholders only from supplied facts.
+Create a gap list covering purpose, scope, stakeholders, system boundary,
+interfaces, constraints, quality attributes, risks, evidence, and approvals.
+Resolve consequential gaps before developing detailed artifacts. Work in
+dependency order from context and needs through requirements, use cases,
+architecture, tests, evidence, and release.
+
+\subsection{Add or Change a Requirement}
+Identify the originating need and affected use cases. Draft a singular
+verifiable obligation, select its primary category, priority, and status, and
+assign a stable ID. Add or update mapped use cases and tests, then update
+traceability and verification. Confirm every link in both directions and add a
+linked history entry.
+
+\subsection{Add or Change a Use Case}
+Identify the actor goal, system boundary, and mapped requirements. Complete one
+use-case table with success, alternate, and exception behavior. Add mapped
+tests, update requirement mappings and traceability, and confirm that no flow
+introduces an unrecorded requirement.
+
+\subsection{Develop or Change Architecture}
+Identify the requirements and quality attributes that drive the decision.
+Describe alternatives, trade-offs, risks, interfaces, and the selected
+structure. Update every affected architectural view and diagram. Confirm that
+the proposed design neither omits a driving requirement nor silently adds an
+unapproved constraint.
+
+\subsection{Add Tests or Evidence}
+Derive each test from mapped requirements and use-case flows. Define repeatable
+steps and objective expected results. Link retained evidence only after an
+actual execution. Update verification or validation records without converting
+an expected outcome into a claimed result.
+
+\subsection{Review and Prepare a Release}
+Audit IDs, mappings, statuses, versions, unresolved assumptions, verification,
+validation, operational readiness, and release criteria. Report contradictions
+and missing evidence. Prepare a release recommendation for human approval; do
+not approve the release.
+
+\section{Example AI Requests and Prompts}
+\label{Section:AIExamplePrompts}
+\index{AI agent!example prompts}
+Replace bracketed text with project facts. A prompt does not override this
+guide, the controlled project evidence, or human approval boundaries.
+
+\subsection{Initialize the Architecture Book}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and use the Initialize a Project workflow
+for [Project Name]. Review the supplied project evidence and create
+a gap list before editing. Identify missing scope, stakeholders,
+interfaces, constraints, quality attributes, risks, evidence, and
+approvals. After the gap list is reviewed, replace only supported
+placeholders and develop the document in dependency order. Compile
+the complete PDF and report unresolved human decisions.
+\end{verbatim}
+
+\subsection{Develop Requirements}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and follow the Requirements context and
+workflow. From the approved objectives and user stories, propose
+singular, feasible, and verifiable requirements. Classify each one,
+use shall for the binding obligation, assign one priority and one
+status, and map it to at least one use case and test case. Do not
+mark work Done or assign an implementation version without evidence.
+Update reciprocal mappings, history, and the index; then build and
+inspect the affected pages.
+\end{verbatim}
+
+\subsection{Develop Use Cases}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and follow the Use-Case context and
+workflow. Derive use cases from the approved actor goals and mapped
+requirements. Give each use case its own table with actors, trigger,
+preconditions, main flow, alternate and exception flows, outcome,
+postconditions, requirements, and tests. Maintain reciprocal links
+and report any flow that requires a new requirement. Build and
+inspect the affected pages.
+\end{verbatim}
+
+\newpage
+\subsection{Develop an Architecture Decision}
+\thispagestyle{fancy}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and follow the Architecture context and
+workflow for [decision or subsystem]. Identify driving requirements,
+quality attributes, constraints, interfaces, and risks. Compare
+reasonable alternatives and document the trade-off supporting the
+proposed choice. Update every affected architecture view and editable
+diagram source. Do not present the proposal as approved. Compile the
+document and inspect all affected diagrams and pages.
+\end{verbatim}
+
+\subsection{Develop Tests and Traceability}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and follow the Testing and Evidence context.
+For [requirements or use cases], define repeatable tests with inputs,
+preconditions, steps, expected results, and required evidence. Update
+all reciprocal mappings and the traceability matrix. Do not invent an
+execution result or mark verification complete. Compile the document,
+check references, and inspect the affected tables.
+\end{verbatim}
+
+\subsection{Review Release Readiness}
+\begin{verbatim}
+Read dsnAIAgentGuide.tex and follow the Release context and workflow
+for [release]. Audit requirement status and implementation versions,
+traceability, verification, validation, defects, operations, rollback,
+known limitations, and approvals. Separate confirmed evidence from
+gaps and assumptions. Prepare a release-readiness recommendation for
+human review, but do not approve release. Build and inspect the final
+document.
+\end{verbatim}
+
+\section{Human Decisions and Information Boundaries}
+\index{AI agent!human review}
+An authorized human shall approve scope, requirements, architecture decisions,
+security and privacy posture, safety decisions, evidence sufficiency, waivers,
+validation conclusions, and release. The agent shall present alternatives and
+evidence without claiming that review has occurred.
+
+Do not provide an AI agent with credentials, secrets, personal data,
+production data, export-controlled material, or other information it is not
+authorized to process. Before using external sources, confirm that the task
+permits network access and that the source may be incorporated. Record material
+prompts, assumptions, corrections, and unresolved issues in
+\ChapterRef{AIPromptLog}.
+
+\section{Completion Checklist}
+\index{AI agent!completion checklist}
+\small
+\begin{tabularx}{\linewidth}{L{3.5cm}Y}
+\caption{AI-Assisted Change Completion Checklist\label{Table:AICompletionChecklist}}\\
+\toprule
+\textbf{Area} & \textbf{Required Completion Evidence}\\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{\small\itshape AI-Assisted Change Completion Checklist (continued)}\\
+\toprule
+\textbf{Area} & \textbf{Required Completion Evidence}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Scope & The requested outcome is complete; unrelated chapters and user changes remain untouched.\\
+Evidence & New factual statements are supported by supplied or controlled evidence; proposals, assumptions, and unknowns are identified.\\
+Language & Binding requirements use shall; priority and status use the controlled terms and definitions.\\
+Identifiers & Stable IDs remain unique and are neither renumbered nor reused.\\
+Traceability & Every changed requirement, use case, test, verification record, and validation record has complete reciprocal mappings.\\
+History & The newest approved document change appears at the top of document history and links to the changed location.\\
+Glossary and index & New controlled terms and important concepts are defined and indexed where applicable.\\
+Build & The complete platform build succeeds; citations, glossary, index, diagrams, and cross-references are regenerated.\\
+Log review & No fatal error, undefined reference, duplicate label, missing file, or unresolved layout warning remains.\\
+Visual review & Affected PDF pages show readable tables, correct page breaks, current diagrams, working headings, and no clipped or overlapping content.\\
+Human review & Decisions requiring authority are clearly identified and are not represented as approved without evidence.\\
+\end{tabularx}
+\normalsize

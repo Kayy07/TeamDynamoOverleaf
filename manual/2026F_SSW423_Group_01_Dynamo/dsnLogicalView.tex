@@ -1,0 +1,6 @@
+\chapter{Logical View}
+\ChapterLabel{LogicalView}
+\section{How to Use This Chapter}
+Model the domain concepts, responsibilities, relationships, data ownership, and invariants without committing to code-level structure. Use a class, entity, or conceptual diagram where useful.
+\section{Example}
+\textit{Request} has an identifier, submitter, status, and submitted time. A request has one or more \textit{Request Items}. Invariants: every identifier is unique; every request has a valid status; an approved request cannot return to Draft without an authorized transition.

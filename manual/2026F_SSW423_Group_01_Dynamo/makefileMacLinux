@@ -1,0 +1,23 @@
+MAIN := SeniorDesignReportTemplate
+
+.PHONY: pdf diagrams clean
+
+pdf: diagrams
+	pdflatex -interaction=nonstopmode -halt-on-error $(MAIN).tex
+	bibtex $(MAIN)
+	makeglossaries $(MAIN)
+	makeindex $(MAIN).idx
+	pdflatex -interaction=nonstopmode -halt-on-error $(MAIN).tex
+	pdflatex -interaction=nonstopmode -halt-on-error $(MAIN).tex
+
+diagrams:
+	@for source in diagrams/*/*.dot; do \
+		name=$$(basename "$$source" .dot); \
+		chapter=$$(basename $$(dirname "$$source")); \
+		mkdir -p "png/$$chapter"; \
+		dot -Gdpi=180 -Tpng "$$source" -o "png/$$chapter/$$name.png"; \
+	done
+
+clean:
+	latexmk -c $(MAIN).tex
+	rm -f $(MAIN).acn $(MAIN).acr $(MAIN).alg $(MAIN).bbl $(MAIN).blg $(MAIN).glg $(MAIN).glo $(MAIN).gls $(MAIN).ist $(MAIN).xdy

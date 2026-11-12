@@ -1,0 +1,31 @@
+\chapter{Validation}
+\ChapterLabel{Validation}
+\index{validation}
+\index{validation scenario}
+\section{How to Use This Chapter}
+Evaluate whether the completed system solves stakeholder needs in its intended context. Define realistic scenarios, participant roles, success criteria, observations, and disposition of requested changes.
+Validation answers ``Did we build the right system?''
+
+\section{Validation Register}
+\small
+\begin{tabularx}{\linewidth}{L{1.6cm}L{2.4cm}YL{3.6cm}L{2.2cm}}
+\caption{Validation Register\label{Table:ValidationRegister}}\\
+\toprule
+\textbf{ID} & \textbf{Related Story} & \textbf{Scenario} & \textbf{Success Criterion} & \textbf{Status}\\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\small\itshape Validation Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Related Story} & \textbf{Scenario} & \textbf{Success Criterion} & \textbf{Status}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\ValidationID{VAL-001} & \UserStoryRef{US-001} & A customer submits a realistic service request without coaching. & The customer receives a unique identifier and confirms that the workflow supports the intended task. & \StatusPending\\
+\ValidationID{VAL-002} & \UserStoryRef{US-002} & A customer checks the progress of an existing request. & The customer correctly identifies the current status and latest update and judges the response timely. & \StatusPending\\
+\ValidationID{VAL-003} & \UserStoryRef{US-003} & An authorized analyst exports a representative request history. & Within five minutes, the analyst opens the approved format, finds the expected records, and confirms source records were unchanged. & \StatusPending\\
+\end{tabularx}
+\normalsize

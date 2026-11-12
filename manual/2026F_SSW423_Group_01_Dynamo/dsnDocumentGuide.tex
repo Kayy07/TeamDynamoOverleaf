@@ -1,0 +1,297 @@
+\chapter{Document Authoring Guide}
+\ChapterLabel{DocumentGuide}
+\index{LaTeX}
+\index{document conventions}
+\index{build tools}
+\index{AI agent!LaTeX installation prompt}
+\index{Appendix!Document Authoring Guide}
+
+\section{How to Use This Appendix}
+Use this appendix to maintain authoring conventions, repository locations,
+diagram sources, review rules, tool installation, and PDF build instructions.
+Update it whenever the document structure or toolchain changes.
+
+\section{Template Provenance}
+\index{template provenance}
+This template was developed by \textbf{Darian Muresan, Ph.D.}, in conjunction
+with the AI agents \textbf{OpenAI Codex} and
+\textbf{Anthropic Claude Code}. Questions, corrections, and proposed
+improvements may be sent to
+\href{mailto:dmuresan@stevens.edu}{dmuresan@stevens.edu},
+\href{mailto:darian@dmmd.net}{darian@dmmd.net}, or
+\href{mailto:darian@pictomic.com}{darian@pictomic.com}.
+
+Keep the template attribution distinct from the project-specific document
+owner and organization. A derived project may replace the project metadata
+while retaining this provenance statement for the underlying template.
+
+\section{AI-Assisted Authoring}
+\index{AI agent!architecture workflow}
+The authoritative instructions for AI-assisted architecture work, including
+task routing, limited context loading, workflows, example prompts, completion
+checks, and human-review boundaries, are contained in
+\ChapterRef{AIAgentGuide}. This appendix retains installation, build, file, and
+LaTeX authoring guidance that applies to both human authors and AI agents.
+
+\section{File Naming}
+
+Every chapter file uses the lowercase namespace \texttt{dsn}, followed by a
+Pascal-style responsibility name and the \texttt{.tex} extension. Examples are
+\texttt{dsnRequirements.tex}, \texttt{dsnTests.tex}, and
+\texttt{dsnValidation.tex}. Supporting diagram files use the same prefix.
+
+\section{One Responsibility per Chapter}
+
+A chapter answers one major engineering question. When content belongs
+to another responsibility, link to its authoritative chapter instead of
+copying it. In particular, tests define procedures, verification records
+requirement compliance, validation evaluates stakeholder use, and release
+decides whether the evidence is sufficient.
+
+\section{Adding a Chapter}
+
+Create the namespaced file, begin it with a chapter title and stable chapter
+label, add useful index terms, and include it once from
+\texttt{dsnManual.tex}. Add or change artifact mappings only in the canonical
+traceability matrix.
+
+\begin{verbatim}
+\chapter{Example Chapter}
+\ChapterLabel{ExampleChapter}
+\index{example}
+\index{Chapter!Example Chapter}
+
+Chapter content goes here.
+\end{verbatim}
+
+\section{Building the PDF}
+
+The build files regenerate all Graphviz diagrams before compiling the document. They require:
+
+\begin{itemize}
+  \item Graphviz, including the \texttt{dot} command;
+  \item a LaTeX distribution containing \texttt{pdflatex}, \texttt{bibtex}, and \texttt{latexmk}; and
+  \item the \texttt{makeglossaries} and \texttt{makeindex} commands.
+\end{itemize}
+
+\subsection{Installing the Tools on macOS}
+
+The full MacTeX distribution is recommended because it includes the LaTeX tools and packages used by this template. Complete these steps from an administrator account:
+
+\begin{enumerate}
+  \item Open Terminal and install Apple's command-line tools, which provide \texttt{make}:
+\begin{verbatim}
+xcode-select --install
+\end{verbatim}
+  Complete the installer dialog before continuing.
+
+  \item Install Homebrew by following the current instructions at \url{https://brew.sh/}. Then install Graphviz and MacTeX:
+\begin{verbatim}
+brew install graphviz
+brew install --cask mactex
+\end{verbatim}
+  MacTeX may instead be downloaded directly from \url{https://tug.org/mactex/}.
+
+  \item Close and reopen Terminal so the MacTeX command-line tools are added to the system path.
+
+  \item Verify that every required command is available:
+\begin{verbatim}
+command -v make dot pdflatex bibtex \
+  makeglossaries makeindex latexmk
+\end{verbatim}
+  Each tool shall print a path. A missing line identifies the tool that still needs to be installed or added to the system path.
+\end{enumerate}
+
+\subsection{Installing the Tools on Windows}
+
+Use a current Windows 10 or Windows 11 computer and complete these steps:
+
+\begin{enumerate}
+  \item Download and run the Basic MiKTeX Installer from \url{https://miktex.org/howto/install-miktex}. Choose a private per-user installation when appropriate and select \emph{Always install missing packages on-the-fly} for a computer with Internet access.
+
+  \item Open MiKTeX Console, check for updates, and install them. If \texttt{latexmk} is not found during verification, use the Packages page in MiKTeX Console to install the \texttt{latexmk} package.
+
+  \item Open PowerShell and install Graphviz with Windows Package Manager:
+\begin{verbatim}
+winget install graphviz
+\end{verbatim}
+  If \texttt{winget} is unavailable, use the current 64-bit installer from \url{https://graphviz.org/download/} and enable the option that adds Graphviz to the system path.
+
+  \item Close and reopen PowerShell, then verify the required commands:
+\begin{verbatim}
+Get-Command dot,pdflatex,bibtex
+Get-Command makeglossaries,makeindex,latexmk
+\end{verbatim}
+  Each tool shall produce a command record. A command-not-found error identifies a missing installation or system-path entry.
+\end{enumerate}
+
+On an organization-managed computer, authors shall ask the system administrator
+before installing software or changing a managed execution policy.
+
+\subsection{Installing the Tools on Ubuntu or Debian Linux}
+
+Open a terminal and install Graphviz, GNU Make, Latexmk, and a TeX Live set
+that contains the packages used by this template:
+
+\begin{verbatim}
+sudo apt update
+sudo apt install graphviz make latexmk texlive-latex-extra \
+  texlive-fonts-recommended texlive-bibtex-extra \
+  texlive-extra-utils
+\end{verbatim}
+
+Verify the required commands:
+
+\begin{verbatim}
+command -v make dot pdflatex bibtex \
+  makeglossaries makeindex latexmk
+\end{verbatim}
+
+For another Linux distribution, install the equivalent Graphviz, GNU Make,
+Latexmk, and full or extended TeX Live packages with its package manager.
+
+\subsection{AI-Agent Installation}
+\label{Section:AIAgentInstallation}
+
+An AI coding agent can inspect the host, identify missing commands, request
+approval for system changes, install the appropriate packages, and verify the
+build. Give the agent the project directory and the following reusable request:
+
+\begin{verbatim}
+In this LaTeX project, inspect the build files and determine
+which operating system and package manager are available.
+Verify make, dot, pdflatex, bibtex, makeglossaries,
+makeindex, and latexmk. Install only missing tools using the
+platform's standard package manager. Ask for approval before
+administrator-level, system-wide, or networked installation.
+Do not replace project sources or remove user files. After
+installation, regenerate the Graphviz diagrams, run the full
+platform build, inspect the log for errors, unresolved
+references, and overfull boxes, and report the generated PDF.
+\end{verbatim}
+
+If the agent cannot install software, ask it to report the exact missing
+command, the attempted verification, and platform-specific installation
+instructions. Never give an agent an unrestricted instruction to delete build
+directories or modify system security policy.
+
+\subsection{Building on macOS and Linux}
+
+From the template directory, run:
+
+\begin{verbatim}
+make -f makefileMacLinux pdf
+\end{verbatim}
+
+Use \texttt{make -f makefileMacLinux diagrams} to regenerate only the diagrams and \texttt{make -f makefileMacLinux clean} to remove generated build files while preserving authored sources and the final PDF.
+
+\subsection{Building with Windows PowerShell}
+
+From PowerShell in the template directory, run:
+
+\begin{verbatim}
+.\makefilePowerShell.ps1 -Action pdf
+\end{verbatim}
+
+Use \texttt{-Action diagrams} or \texttt{-Action clean} in place of \texttt{-Action pdf} to run those operations independently. If local execution policy prevents scripts from running, use an approved organizational policy or allow scripts only for the current PowerShell process:
+
+\begin{verbatim}
+Set-ExecutionPolicy -Scope Process Bypass
+.\makefilePowerShell.ps1 -Action pdf
+\end{verbatim}
+
+\subsection{Manual Build Sequence}
+
+When the platform build script is unavailable, run the following commands from
+the template directory. The final two LaTeX passes resolve tables of contents,
+citations, glossary links, the index, and cross-references.
+
+\begin{verbatim}
+dot -Gdpi=180 -Tpng diagrams/dsnVModel.dot \
+  -o png/dsnVModel.png
+dot -Gdpi=180 -Tpng diagrams/dsnUseCaseDiagram.dot \
+  -o png/dsnUseCaseDiagram.png
+pdflatex -interaction=nonstopmode -halt-on-error dsnManual.tex
+bibtex dsnManual
+makeglossaries dsnManual
+makeindex dsnManual.idx
+pdflatex -interaction=nonstopmode -halt-on-error dsnManual.tex
+pdflatex -interaction=nonstopmode -halt-on-error dsnManual.tex
+\end{verbatim}
+
+The provided build scripts regenerate every \texttt{.dot} diagram, not only the
+two shown in this abbreviated manual sequence.
+
+\subsection{Build Verification and Troubleshooting}
+
+Confirm that the output PDF opens, all expected chapters and appendices appear,
+the glossary and index are populated, hyperlinks reach their targets, and no
+table or figure is clipped. Search \texttt{dsnManual.log} for fatal errors,
+undefined references, missing files, and overfull boxes. Common remedies are:
+
+\begin{itemize}
+\item open a new terminal after installation so its search path is refreshed;
+\item on macOS, verify that \texttt{/Library/TeX/texbin} is on the search path;
+\item rerun the complete build after adding citations, glossary entries, index
+entries, figures, labels, or references;
+\item regenerate diagrams after changing a \texttt{.dot} source; and
+\item install the named LaTeX package when the log reports a missing
+\texttt{.sty} file.
+\end{itemize}
+
+\section{Authoring Rules}
+
+\begin{itemize}
+\item Add the newest approved change to the top of the document history.
+\item Introduce specialized terms through the glossary and use them consistently.
+\item Give every controlled artifact a stable explicit ID.
+\item Use \texttt{shall} only for binding requirements.
+\item Keep normative requirements separate from explanation and examples.
+\item Store editable diagram sources in \texttt{diagrams/} and rendered images in \texttt{png/}.
+\item Compile and inspect the PDF after structural or table changes.
+\end{itemize}
+
+\section{Citations and Bibliography}
+
+Store controlled reference records in \texttt{dsnReferences.bib}. Cite a
+source from a chapter with a stable BibTeX key:
+
+\begin{verbatim}
+\cite{ISO29148}
+\end{verbatim}
+
+The main file applies the style and prints one document-level bibliography:
+
+\begin{verbatim}
+\bibliographystyle{IEEEtran}
+\bibliography{dsnReferences}
+\end{verbatim}
+
+Both platform build scripts run BibTeX automatically.
+
+Bibliography entries support claims and definitions; they do not replace
+project-owned requirements, architecture decisions, test procedures, or
+approval evidence.
+
+\section{Selective Builds}
+
+For a large project, LaTeX's \verb|\includeonly| command may select chapters
+during drafting. The main file contains a commented example:
+
+\begin{verbatim}
+% \includeonly{
+%   prologue,
+%   dsnRequirements,
+%   dsnTests
+% }
+\end{verbatim}
+
+Remove the leading comment characters and list include names without the
+\texttt{.tex} extension. LaTeX can retain cross-references and citations from
+omitted chapters by reading their existing auxiliary files, but those files
+may be absent or stale. Selective builds are therefore drafting aids only.
+Hyperref may also report missing destinations for links into deliberately
+omitted chapters; these draft warnings shall disappear in the full build.
+Comment out the complete \verb|\includeonly| block and run a full build before
+verification or release so missing chapters, references, glossary entries,
+citations, and evidence cannot be hidden.

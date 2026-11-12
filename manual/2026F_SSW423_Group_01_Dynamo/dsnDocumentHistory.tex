@@ -1,0 +1,71 @@
+\chapter*{Document History}
+\addcontentsline{toc}{chapter}{Document History}
+\index{document history}
+
+\noindent Add the newest approved change at the top of the table. Retain every approved entry so that the report's evolution and review history remain auditable.
+
+\begin{tabularx}{\linewidth}{L{2.7cm}L{2.0cm}YL{1.8cm}}
+\caption{Document Update History\label{Table:DocumentHistory}}\\
+\toprule
+\textbf{Date / Version} & \textbf{Author} & \textbf{Change} & \textbf{Location}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Date / Version} & \textbf{Author} & \textbf{Change} & \textbf{Location}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\textit{[date / version]} & \textit{[initials]} & \textit{[approved change and rationale]} & \textit{[section]}\\
+
+November 6, 2026 / 1.1.5 & JL, KH, NS, RG &
+Added to Weekly Report.& 
+\ChapterRef{WeeklyReports}\\
+
+October 30, 2026 / 1.1.4 & JL, KH, NS, RG &
+Added to Weekly Report. Added more requirements and user stories for demo 2. Added Activity Diagrams chapter with diagrams from the demo. & 
+\ChapterRef{WeeklyReports} \ChapterRef{Requirements} \ChapterRef{UserStories} \ChapterRef{Diagrams}\\
+
+October 23, 2026 / 1.1.3 & JL, KH, NS, RG &
+Added to Weekly Report. Added quality requirements  & 
+\ChapterRef{WeeklyReports} \ChapterRef{Requirements}\\
+
+October 16, 2026 / 1.1.2 & JL, KH, NS, RG &
+Added to Weekly Report. Updated Development Plan to have long term plan for tech stack. & 
+\ChapterRef{WeeklyReports} \ChapterRef{DevelopmentPlan}\\
+
+October 9, 2026 / 1.1.1 & JL, KH, NS, RG &
+Added to Weekly Report. Added User story and requirement for uploading work to website. \UserStoryRef{US-020} \RequirementRef{REQ-F-003} \UseCaseRef{UC-009} &
+\ChapterRef{WeeklyReports} \ChapterRef{Requirements} \ChapterRef{UserStories} \ChapterRef{UseCases}\\
+
+October 2, 2026 / 1.1.0 & JL, KH, NS, RG &
+Added to Weekly Report. &
+\ChapterRef{WeeklyReports}\\
+
+September 25, 2026 / 1.0.5 & JL, KH, NS, RG &
+Updated Appendix A with Week 4 Report and added development plan. &
+\ChapterRef{WeeklyReports} \ChapterRef{DevelopmentPlan}\\
+
+September 24, 2026 / 1.0.4 & NS &
+Moved the team introductions under the Team Declaration chapter and removed the separate Introductions chapter. Moved mission statemnent, key drivers, and key constraints under Project Plan chapter. Corrected broken requirement references and traceability links across the requirements, user stories, and use cases. &
+\ChapterRef{TeamDeclaration},
+\ChapterRef{ProjectPlan},
+\ChapterRef{Requirements}, \ChapterRef{UserStories}, \ChapterRef{UseCases}\\
+
+September 24, 2026 / 1.0.3 & JL, KH, NS, RG &
+Edited Team Declaration, added use cases, user stories, and more requirements. Also added bibliography and citations.&
+\ChapterRef{TeamDeclaration}, \ChapterRef{Requirements}, \ChapterRef{UserStories}, \ChapterRef{UseCases}\\
+
+September 18, 2026 / 1.0.2 & JL, KH, NS, RG &
+Cleaned up the report structure so only chapters applicable to the project's current progress are shown. Completed the Team Declaration for Milestone 0, added initial Requirements, and added Week Report 3 documenting the team's current progress. Deferred template chapters were commented out until needed. &
+\ChapterRef{TeamDeclaration}, \ChapterRef{Requirements},
+\ChapterRef{WeeklyReports}\\
+
+September 11, 2026 / 1.0.1 & JL, KH, NS, RG & Added second weekly report. & \ref{Weekly Reports}\\
+
+September 4, 2026 / 1.0.0 & JL, KH, NS, RG & Added Appendix Chapter called "Weekly Reports" and added first weekly report. Added Introduction chapter introducing everyone & \ref{Weekly Reports}\\
+\textit{[baseline date / 0.1]} & \textit{[initials]} & \textit{[project-specific baseline]} & \textit{[section]}\\
+\end{tabularx}
