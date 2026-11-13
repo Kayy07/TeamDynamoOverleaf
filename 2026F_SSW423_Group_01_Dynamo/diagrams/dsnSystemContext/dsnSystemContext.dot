@@ -1,0 +1,17 @@
+digraph SystemContext {
+  graph [bgcolor="white", pad="0.25", nodesep="0.7", ranksep="0.7", splines="polyline"];
+  node [fontname="Helvetica", fontsize="10", color="#455a64"];
+  edge [fontname="Helvetica", fontsize="9", color="#546e7a", arrowsize="0.7"];
+
+  student [shape="box", style="rounded,filled", fillcolor="#f7f7f7", label="Student"];
+  teacher [shape="box", style="rounded,filled", fillcolor="#f7f7f7", label="Teacher / Tester"];
+  browser [shape="box3d", style="filled", fillcolor="#fff4df", label="Browser Runtime\nDOM, timers, Web Storage"];
+  system [shape="box", style="rounded,filled,bold", penwidth="1.8", color="#1f4e79", fillcolor="#e8f0f7", width="2.8", height="1.2", label="Study Sprint Planner\nTask model, timer, UI, storage adapter"];
+
+  student -> system [label=" tasks and commands"];
+  system -> student [label=" status and progress"];
+  teacher -> system [label=" scenarios and tests"];
+  system -> teacher [label=" evidence"];
+  system -> browser [label=" browser APIs"];
+  browser -> system [label=" events and stored data"];
+}

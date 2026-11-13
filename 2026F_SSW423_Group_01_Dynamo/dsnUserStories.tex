@@ -1,0 +1,147 @@
+\chapter{User Stories}
+\ChapterLabel{UserStories}
+\index{user story}
+\index{acceptance criterion}
+% \section{How to Use This Chapter}
+% Capture stakeholder goals in accessible language. Stories express value and
+% acceptance intent; precise obligations belong in Requirements. Give each story
+% a stable ID, a priority, and links to one or more requirements that implement it.
+
+\section{User Story Register}
+\begin{tabularx}{\linewidth}{L{1.9cm}YL{1.8cm}L{3.4cm}}
+\caption{User Story Register\label{Table:UserStories}}\\
+\toprule
+\textbf{ID} & \textbf{Story and Acceptance Criteria} & \textbf{Priority} & \textbf{Requirement(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\small\itshape User Story Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Story and Acceptance Criteria} & \textbf{Priority} & \textbf{Requirement(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\UserStoryID{US-001} &
+As a researcher, I want to access the research artifacts so that I can review, reuse, and independently inspect the work. Acceptance: the system provides access to the research paper, available simulation code, and research data while clearly distinguishing raw and processed data artifacts. &
+\gls{must} &
+\RequirementRef{REQ-B-001}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-C-001}\\
+
+\UserStoryID{US-002} &
+As a researcher or student, I want to explore explanations of the fundamental concepts used in the research so that I can understand the scientific context of the project. Acceptance: the system presents relevant research concepts and provides the physical definitions and units needed to interpret the scientific variables used by the project. &
+\gls{must} &
+\RequirementRef{REQ-B-003}, \RequirementRef{REQ-D-008}, \RequirementRef{REQ-C-001}\\
+
+\UserStoryID{US-003} &
+As a researcher, I want to examine key research figures and trace them back to their supporting data so that I can understand how the reported results were produced. Acceptance: a key figure can be associated with the processing or analysis procedure, relevant scientific quantities and units, source data, and simulation parameters used to produce it. &
+\gls{must} &
+\RequirementRef{REQ-B-004}, \RequirementRef{REQ-D-006}, \RequirementRef{REQ-D-007}, \RequirementRef{REQ-D-008},    \RequirementRef{REQ-I-001}, \RequirementRef{REQ-C-001}\\
+
+\UserStoryID{US-004} &
+As a researcher, I want sufficient data, metadata, and procedural information to reproduce a documented result so that I can independently verify the research. Acceptance: the system provides the required simulation inputs, computational environment and software metadata, raw and processed data relationships, analysis procedures, provenance information, and other documented information needed to reproduce a simulation and its associated analysis. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-007}, \RequirementRef{REQ-D-008} \\
+
+\UserStoryID{US-005} &
+As a researcher, I want to find multiple projects relevant to a topic. Acceptance: the system searches through all projects and returns a list of projects relevant to the query &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-006} &
+As a general member of the population, I want to understand the results of a paper. Acceptance: Scientific terms are defined in plain language. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-007} &
+As a general member of the population, I want to understand the figures in a paper. Acceptance: Figures and how they relate to the research are described in plain language.&
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-008} &
+As a researcher with no web development background, I want to use the system to support my research. Acceptance: Research pages can be made without installation of any tools or writing of any code. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006},    \RequirementRef{REQ-I-002}, \RequirementRef{REQ-C-002}\\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}, 
+
+\UserStoryID{US-009} &
+As a researcher, I would like to use videos to help convey complex processes in my research. Acceptance: Videos can be uploaded and displayed on the system.&
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ 
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}, \RequirementRef{REQ-I-003}\\
+
+\UserStoryID{US-010} &
+As a researcher, I want to easily tell if a paper is relevant to me to decide if I should read more. Acceptance: Researchers can determine the relevance of a paper without reading the paper. &
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-011} &
+As a researcher, I want to be able to edit materials related to a paper. Acceptance: Users can edit materials after they have be posted. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-012} &
+As a third-party researcher, I want to comment on others' research to build scientific discourse. Acceptance: Users can leave public comments on specific materials of a research project. &
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-013} &
+As a researcher, I want to find similar works to a paper I am looking at to conduct my literature review. Acceptance: Related works are linked on the same page. &
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-014} &
+As a researcher, I want to ensure only I can upload my work. Acceptance: Users can flag work as stolen. &
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-015} &
+As a researcher, I want to track the edit history of a page maintain transparency. Acceptance: All changes made to a resource are tracked and accessible. &
+\gls{should} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-016} &
+As a third-party researcher, I want to track all experiments conducted in a research project to know what not to try or inspire future research directions. Acceptance: A log of all experiments is made available.&
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ %\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}\\
+
+\UserStoryID{US-017} &
+As a researcher, I want to allow collaborators to edit materials related to a paper. Acceptance: Users can manage edit access to papers. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006} \\ 
+
+\UserStoryID{US-018} &
+As a member of the general population, I want to be able to use the platform no matter my operating system. Acceptance: The platform is accessible across different operating systems. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006},    \RequirementRef{REQ-C-003}\\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}, 
+
+\UserStoryID{US-019} &
+As a member of the general population, I want to be able to use the platform properly no matter my browser. Acceptance: Platform behavior is consistent across different browsers. &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006},    \RequirementRef{REQ-C-003}\\
+%\RequirementRef{REQ-D-010}, \RequirementRef{REQ-D-011}, 
+
+\UserStoryID{US-020} &
+As a researcher, I want to be able to upload my previous work without having to completely rewrite content. Acceptance: Platform scans previous papers and autofills certain fields &
+\gls{must} &
+\RequirementRef{REQ-B-005},    \RequirementRef{REQ-D-004}, \RequirementRef{REQ-D-005}, \RequirementRef{REQ-D-006},    \RequirementRef{REQ-C-003}\\
+
+\UserStoryID{US-021} &
+As a member of the general population, I want to find papers quickly with minimal effort. Acceptance: Platform provides search results in response to query quickly. & \gls{must} & \RequirementRef{REQ-Q-006}, \RequirementRef{REQ-Q-007}, \RequirementRef{REQ-Q-009}\\
+
+\UserStoryID{US-022} &
+As a researcher, I want to upload other research artifacts so others can better understand my work. Acceptance: Users are able to upload supplementary material to their research. & \gls{must} & \RequirementRef{REQ-D-001}, \RequirementRef{REQ-D-008} \\
+
+
+\end{tabularx}
+
+\section{Review Rules}
+Confirm that every story identifies a beneficiary, outcome, acceptance
+criterion, priority, and at least one linked requirement. Maintain reciprocal
+story links in the traceability register.

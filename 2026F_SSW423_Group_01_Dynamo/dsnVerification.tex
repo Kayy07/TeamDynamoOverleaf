@@ -1,0 +1,37 @@
+\chapter{Verification}
+\ChapterLabel{Verification}
+\index{verification}
+\index{verification method}
+\section{How to Use This Chapter}
+Show that each requirement conforms to its specification using test, inspection, analysis, or demonstration. Record the method, evidence reference, responsible reviewer, result, and any waiver.
+Verification answers ``Did we build the system right?''
+
+\section{Verification Register}
+\small
+\begin{tabularx}{\linewidth}{L{1.8cm}L{2.6cm}L{2.0cm}YL{2.2cm}}
+\caption{Verification Register\label{Table:VerificationRegister}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Method} & \textbf{Required Evidence} & \textbf{Status}\\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\small\itshape Verification Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Method} & \textbf{Required Evidence} & \textbf{Status}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\VerificationID{VER-001} & \RequirementRef{REQ-F-001} & Test & Passing \TestCaseRef{TC-001} execution record showing creation of one request with a unique identifier. & \StatusPass\\
+\VerificationID{VER-002} & \RequirementRef{REQ-F-002} & Test & Passing \TestCaseRef{TC-002} execution record showing the current status and most recent update. & \StatusPass\\
+\VerificationID{VER-003} & \RequirementRef{REQ-Q-001} & Analysis and test & Timing analysis and passing \TestCaseRef{TC-003} measurements under the reference workload. & \StatusPass\\
+\VerificationID{VER-004} & \RequirementRef{REQ-F-003} & Inspection and test & Export inspection and passing \TestCaseRef{TC-004} execution record. & \StatusPending\\
+\VerificationID{VER-005} & \RequirementRef{REQ-I-001} & Inspection and test & Schema-validation report and passing \TestCaseRef{TC-005} execution record. & \StatusPending\\
+\VerificationID{VER-006} & \RequirementRef{REQ-S-001} & Analysis and test & Access-control analysis, denial records, and passing \TestCaseRef{TC-006} execution record. & \StatusPass\\
+\VerificationID{VER-007} & \RequirementRef{REQ-D-001} & Inspection and test & Stored-history inspection and passing \TestCaseRef{TC-007} execution record. & \StatusPass\\
+\VerificationID{VER-008} & \RequirementRef{REQ-C-001} & Test & Approved deployment baseline and passing \TestCaseRef{TC-008} compatibility results. & \StatusPass\\
+\VerificationID{VER-009} & \RequirementRef{REQ-B-001} & Test & Timed analyst demonstration and passing \TestCaseRef{TC-009} execution record. & \StatusPending\\
+\end{tabularx}
+\normalsize

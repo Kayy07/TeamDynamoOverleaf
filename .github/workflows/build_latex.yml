@@ -1,25 +1,32 @@
-name: Build LaTeX PDF
+
+name: Build Senior Design Report
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Git repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: SeniorDesignReportTemplate.tex
+          root_file: 2026F_SSW423_Group_01_Dynamo/SeniorDesignReportTemplate.tex
+          work_in_root_file_dir: true
+          latexmk_use_xelatex: false
 
-      - name: Upload PDF artifact
+      - name: Upload compiled PDF
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-pdf
-          path: main.pdf
+          name: Senior-Design-Report
+          path: 2026F_SSW423_Group_01_Dynamo/SeniorDesignReportTemplate.pdf

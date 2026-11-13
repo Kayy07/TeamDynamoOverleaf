@@ -1,0 +1,78 @@
+\chapter{Traceability}
+\ChapterLabel{Traceability}
+\index{traceability}
+\index{requirements traceability matrix}
+\section{How to Use This Chapter}
+Maintain the canonical mapping from stakeholder need or approved constraint through requirement, design decision, implementation, test, verification, validation, and release evidence. Review both missing backward links and missing forward links.
+\section{Traceability Register}
+Requirement and use-case chapters contain reciprocal mappings. The verification and validation evidence columns remain blank until project-specific evidence is documented. An
+unlinked requirement may be gold-plating; an untested requirement or unmapped
+use case is incomplete.
+
+\begin{landscape}
+\small
+\begin{tabularx}{\linewidth}{YYYYYY}
+\caption{Traceability Register\label{Table:TraceabilityMatrix}}\\
+\toprule
+\textbf{User Story} & \textbf{Requirement} & \textbf{Use Case} & \textbf{Test Case} & \textbf{Verification} & \textbf{Validation}\\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\small\itshape Traceability Register (continued)}\\
+\toprule
+\textbf{User Story} & \textbf{Requirement} & \textbf{Use Case} & \textbf{Test Case} & \textbf{Verification} & \textbf{Validation}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\UserStoryRef{US-001} & \RequirementRef{REQ-B-001} & \UseCaseRef{UC-001} & \TestCaseRef{TC-009} & -- & --\\
+\UserStoryRef{US-016} & \RequirementRef{REQ-B-002} & \UseCaseRef{UC-007} & \TestCaseRef{TC-014} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-B-003} & \UseCaseRef{UC-002} & \TestCaseRef{TC-015} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-B-004} & \UseCaseRef{UC-003} & \TestCaseRef{TC-016} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-B-005} & \UseCaseRef{UC-004} & \TestCaseRef{TC-017} & -- & --\\
+\UserStoryRef{US-002} & \RequirementRef{REQ-F-001} & \UseCaseRef{UC-002} & \TestCaseRef{TC-018} & -- & --\\
+\UserStoryRef{US-016} & \RequirementRef{REQ-F-002} & \UseCaseRef{UC-007} & \TestCaseRef{TC-019} & -- & --\\
+\UserStoryRef{US-020} & \RequirementRef{REQ-F-003} & \UseCaseRef{UC-005} & \TestCaseRef{TC-006} & -- & --\\
+\UserStoryRef{US-020} & \RequirementRef{REQ-F-003} & \UseCaseRef{UC-009} & \TestCaseRef{TC-006} & -- & --\\
+\UserStoryRef{US-008} & \RequirementRef{REQ-Q-001} & \UseCaseRef{UC-005} & \TestCaseRef{TC-010} & -- & --\\
+\UserStoryRef{US-015} & \RequirementRef{REQ-Q-002} & \UseCaseRef{UC-005} & \TestCaseRef{TC-002} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-Q-003} & \UseCaseRef{UC-001} & \TestCaseRef{TC-003} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-Q-003} & \UseCaseRef{UC-005} & \TestCaseRef{TC-003} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-Q-004} & \UseCaseRef{UC-001} & \TestCaseRef{TC-024} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-Q-005} & \UseCaseRef{UC-001} & \TestCaseRef{TC-025} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-Q-005} & \UseCaseRef{UC-005} & \TestCaseRef{TC-025} & -- & --\\
+\UserStoryRef{US-008} & \RequirementRef{REQ-I-001} & \UseCaseRef{UC-005} & \TestCaseRef{TC-029} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-I-002} & \UseCaseRef{UC-005} & \TestCaseRef{TC-020} & -- & --\\
+\UserStoryRef{US-008} & \RequirementRef{REQ-S-001} & \UseCaseRef{UC-005} & \TestCaseRef{TC-030} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-S-002} & \UseCaseRef{UC-005} & \TestCaseRef{TC-004} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-S-002} & \UseCaseRef{UC-008} & \TestCaseRef{TC-004} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-S-003} & \UseCaseRef{UC-005} & \TestCaseRef{TC-021} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-S-004} & \UseCaseRef{UC-001} & \TestCaseRef{TC-022} & -- & --\\
+\UserStoryRef{US-009} & \RequirementRef{REQ-S-005} & \UseCaseRef{UC-005} & \TestCaseRef{TC-023} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-D-001} & \UseCaseRef{UC-005} & \TestCaseRef{TC-001} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-D-003} & \UseCaseRef{UC-007} & \TestCaseRef{TC-026} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-D-004} & \UseCaseRef{UC-004} & \TestCaseRef{TC-027} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-D-004} & \UseCaseRef{UC-005} & \TestCaseRef{TC-027} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-D-004} & \UseCaseRef{UC-007} & \TestCaseRef{TC-027} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-D-005} & \UseCaseRef{UC-003} & \TestCaseRef{TC-028} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-D-005} & \UseCaseRef{UC-004} & \TestCaseRef{TC-028} & -- & --\\
+\UserStoryRef{US-003} & \RequirementRef{REQ-D-005} & \UseCaseRef{UC-005} & \TestCaseRef{TC-028} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-D-006} & \UseCaseRef{UC-004} & \TestCaseRef{TC-011} & -- & --\\
+\UserStoryRef{US-004} & \RequirementRef{REQ-D-006} & \UseCaseRef{UC-005} & \TestCaseRef{TC-011} & -- & --\\
+\UserStoryRef{US-020} & \RequirementRef{REQ-D-007} & \UseCaseRef{UC-009} & \TestCaseRef{TC-005} & -- & --\\
+\UserStoryRef{US-020} & \RequirementRef{REQ-D-008} & \UseCaseRef{UC-005} & \TestCaseRef{TC-007} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-001} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-002} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-003} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-004} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-005} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-007} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-008} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-001} & \RequirementRef{REQ-C-001} & \UseCaseRef{UC-009} & \TestCaseRef{TC-008} & -- & --\\
+\UserStoryRef{US-008} & \RequirementRef{REQ-C-002} & \UseCaseRef{UC-005} & \TestCaseRef{TC-012} & -- & --\\
+\UserStoryRef{US-018} & \RequirementRef{REQ-C-003} & \UseCaseRef{UC-001} & \TestCaseRef{TC-013} & -- & --\\
+\UserStoryRef{US-018} & \RequirementRef{REQ-C-003} & \UseCaseRef{UC-005} & \TestCaseRef{TC-013} & -- & --\\
+\end{tabularx}
+\end{landscape}

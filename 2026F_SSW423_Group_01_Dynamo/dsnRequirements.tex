@@ -1,0 +1,509 @@
+\chapter{Requirements}
+\ChapterLabel{Requirements}
+\index{requirement}
+\index{requirement!implementation version}
+\index{priority}
+
+%\section{How to Use This Chapter}
+%State singular, necessary, unambiguous, feasible, and verifiable obligations.
+%Every requirement shall have a stable ID, one priority, the version in which it
+%was implemented, at least one mapped use case, and at least one mapped test case.
+%Enter \NoVersion\ in \textbf{In Version} when no implementation version has
+%been assigned. Preserve IDs when wording or version assignments change.
+
+%Select the requirement categories that make the specification easier to review
+%and govern. Keep each requirement in one primary register and use traceability
+%links instead of copying the same requirement into multiple categories.
+
+\section{Functional and Quality Requirements}
+\index{requirement!functional}
+\index{requirement!quality}
+Functional and quality requirements answer different questions and shall not be
+used interchangeably.
+
+\begin{dsnNote}[Central Distinction]
+A \textbf{functional requirement} states what behavior, service, calculation,
+state transition, or externally observable result the system shall provide. A
+\textbf{quality requirement} states how well that behavior or the system as a
+whole shall perform under stated conditions. Quality requirements require a
+measurable threshold, workload, environment, or other evaluation basis.
+\end{dsnNote}
+
+For example, ``The system shall display the current request status'' is
+functional. ``The system shall display the current request status within two
+seconds under the reference workload'' is a quality requirement. Avoid vague
+quality statements such as ``the system shall be fast, secure, reliable, or
+easy to use.'' Replace them with measurable conditions and success criteria.
+
+Quality requirements are also called quality-attribute or non-functional requirements. The term \emph{quality requirement} is preferred here because these obligations describe behavior that shall be designed, implemented, and verified rather than an absence of function.
+
+\section{Requirement Status Model}
+\index{requirement!status}
+\index{status!Open}
+\index{status!In Progress}
+\index{status!Done}
+\index{status!Retired}
+Priority and status are independent. Priority records the requirement's importance or commitment; status records its progress through the delivery lifecycle. A status change shall not erase or replace the assigned priority.
+
+\begin{tabularx}{\linewidth}{L{3.0cm}YL{3.3cm}}
+\caption{Requirement Status Definitions\label{Table:RequirementStatusDefinitions}}\\
+\toprule
+\textbf{Status} & \textbf{Meaning} & \textbf{In Version Rule}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Status} & \textbf{Meaning} & \textbf{In Version Rule}\\
+\midrule
+\endhead
+\ReqStatusOpen & The requirement is active, but implementation has not started. Deferred work remains Open until work begins or the requirement is retired. & Enter \NoVersion.\\
+\ReqStatusInProgress & Implementation or integration work has started, but the requirement does not yet satisfy the definition of Done. & Enter \NoVersion.\\
+\ReqStatusDone & The requirement is implemented; mapped tests pass; verification is complete; traceability is current; and the completed behavior is included in a controlled version. & Enter the first controlled version containing the completed requirement.\\
+\ReqStatusRetired & The requirement is no longer active because it was superseded, made obsolete, rejected, or withdrawn. Retain its stable ID, original text, and traceability; record the rationale and any replacement in document history. & Retain the original implementation version if it was previously Done; otherwise enter \NoVersion.\\
+\bottomrule
+\end{tabularx}
+
+Only \ReqStatusDone\ asserts completion. Do not remove a retired requirement or
+reuse its ID. A requirement may move from \ReqStatusRetired\ only through an
+approved change that restores its active status and records the decision in
+document history.
+
+\section{Requirement Category Catalog}
+\index{requirement!category catalog}
+The following catalog distinguishes broad requirement families from their
+subtypes. In particular, performance, capacity, scalability, reliability,
+availability, resilience, recoverability, usability, accessibility,
+maintainability, supportability, testability, portability, compatibility,
+interoperability, security, privacy, safety, sustainability, and observability
+are quality attributes. A requirement concerning one of these attributes is a
+quality requirement when it specifies how well the system shall operate under
+stated conditions.
+
+A project may organize a specialized quality attribute, such as security,
+privacy, or safety, in a separate register when it has distinct owners, review
+criteria, evidence, or assurance obligations. The separate register is a
+management view; it does not change the requirement's classification as a
+quality requirement. Likewise, interface, data, operational, and other families
+may contain both functional obligations and associated quality obligations. Use
+the primary purpose of each requirement to select its register and use links to
+represent cross-cutting concerns.
+
+The catalog is intentionally broad. A project may use a family as a top-level
+register, create registers for selected subtypes, combine closely related
+groups, or omit groups that do not apply. Category choice shall not weaken the
+traceability or verification rules for individual requirements.
+
+\small
+\begin{tabularx}{\linewidth}{L{3.0cm}L{4.0cm}Y}
+\caption{Requirement Families, Subtypes, and Quality Attributes\label{Table:RequirementCategoryCatalog}}\\
+\toprule
+\textbf{Requirement Family} & \textbf{Subtype or Quality Attribute} & \textbf{Typical Scope}\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\itshape Requirement Families, Subtypes, and Quality Attributes (continued)}\\
+\toprule
+\textbf{Requirement Family} & \textbf{Subtype or Quality Attribute} & \textbf{Typical Scope}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Business & Outcomes and policy & Organizational outcomes, value, policy goals, measurable benefits, cost targets, and mission objectives.\\
+Stakeholder and user & Stakeholder need & Capabilities, outcomes, and constraints needed by a stakeholder group or external party.\\
+Stakeholder and user & User need & User goals and externally visible outcomes expressed independently of a particular implementation.\\
+Functional & System behavior & Services, calculations, decisions, state changes, workflows, and observable system responses.\\
+Quality & General quality & Measurable characteristics that state how well a function or the system shall operate under stated conditions.\\
+Quality & Performance & Response time, latency, throughput, processing time, and resource consumption.\\
+Quality & Capacity & Supported data volume, transaction volume, concurrent users, devices, or retained records.\\
+Quality & Scalability & Behavior as workload, data, users, or deployed instances increase or decrease.\\
+Quality & Reliability & Probability or frequency of failure-free operation under stated conditions.\\
+Quality & Availability & Required service availability, planned downtime, and permitted outage duration.\\
+Quality & Resilience and fault tolerance & Continued or degraded operation when components, dependencies, or communication paths fail.\\
+Quality & Recoverability and continuity & Recovery time, recovery point, restoration, backup, failover, and disaster-continuity objectives.\\
+Quality & Usability & Task effectiveness, efficiency, learnability, error prevention, and user satisfaction.\\
+Quality & Accessibility & Conformance and measurable support for users with visual, auditory, motor, speech, or cognitive disabilities.\\
+Quality & Maintainability & Time, effort, modularity, analyzability, and change characteristics required for system modification.\\
+Quality & Supportability & Diagnostic access, service procedures, field replacement, support hours, and support-team capabilities.\\
+Quality & Testability & Controllability, observability, repeatability, test interfaces, and evidence needed to verify behavior.\\
+Quality & Portability & Ability to install, move, or operate the system across specified environments or platforms.\\
+Quality & Compatibility & Coexistence and correct operation with specified versions, devices, browsers, operating systems, or products.\\
+Quality & Interoperability & Coordinated behavior, protocols, semantics, orchestration, and exchanges with external systems.\\
+Quality & Security & Authentication, authorization, confidentiality, integrity, cryptography, auditing, and threat resistance.\\
+Quality & Privacy & Collection, consent, purpose, minimization, access, disclosure, retention, deletion, and rights for personal data.\\
+Quality & Safety & Hazard prevention, risk reduction, safe state, interlocks, alarms, and unacceptable-loss controls.\\
+Quality & Sustainability & Energy use, resource efficiency, carbon reporting, hardware life, repair, reuse, and disposal objectives.\\
+Quality & Observability & Logs, metrics, traces, health signals, diagnostic context, and measurable diagnostic coverage.\\
+Interface & User interface & Human-system interaction, presentation, navigation, input, feedback, and interaction contracts.\\
+Interface & Software and API & Operations, messages, schemas, errors, protocols, sequencing, and software boundary contracts.\\
+Interface & Hardware and communication & Connectors, signals, electrical characteristics, device protocols, networks, and physical boundaries.\\
+Data and information & Data definition and quality & Data definitions, schemas, provenance, accuracy, completeness, integrity, ownership, and permitted transformations.\\
+Data and information & Lifecycle and governance & Creation, access, retention, archival, legal hold, disposition, deletion, and proof of destruction.\\
+Operational & Operation and administration & Startup, shutdown, scheduling, configuration, provisioning, monitoring, backup, recovery, and incident response.\\
+Operational & Deployment and platform & Approved platforms, topology, packaging, installation, configuration, upgrade, and runtime environment.\\
+Operational & Infrastructure and environment & Network, compute, storage, facility, power, temperature, physical location, and environmental limits.\\
+Transition & Migration and rollout & Data conversion, coexistence, rollout, cutover, rollback, legacy integration, and decommissioning.\\
+Compliance and legal & Regulatory and standards & Obligations imposed by regulations, standards, certifications, policies, or assurance frameworks.\\
+Compliance and legal & Legal and contractual & Licenses, warranties, intellectual-property terms, service agreements, procurement terms, and contractual duties.\\
+Compliance and legal & Reporting and audit & Reports, evidence, audit trails, review access, content, timing, and record accountability.\\
+Product support & Documentation & Required user, operator, administrator, developer, API, maintenance, and compliance documentation.\\
+Product support & Training & Required curricula, exercises, qualifications, delivery modes, and demonstrated learner outcomes.\\
+Commercial & Licensing and entitlement & Product editions, entitlement, metering, third-party components, subscriptions, and licensing restrictions.\\
+AI and machine learning & Model and data controls & Model performance, data provenance, bias evaluation, explainability, human oversight, drift, and retraining controls.\\
+Physical and hardware & Physical characteristics & Dimensions, mass, materials, connectors, tolerances, environmental ratings, and hardware behavior.\\
+Constraint & Solution constraint & Mandated technologies, designs, budgets, schedules, standards, dependencies, or solution boundaries.\\
+\end{tabularx}
+\normalsize
+
+\section{Creating a Project-Specific Category}
+Create an additional category when it gives requirements a distinct meaning,
+owner, review method, or assurance process. Define the category's scope and a
+unique ID prefix; duplicate one of the category-specific registers below; keep
+the standard columns; add the category to
+\hyperref[Table:RequirementCategoryCatalog]{the category catalog}; and update
+use cases, tests, traceability, verification, validation, document history, and
+the index as applicable. Document whether the new category is top-level or a
+subtype of an existing category.
+
+Do not create a category solely to avoid resolving an ambiguous requirement.
+If one statement contains multiple independently verifiable obligations, split
+it into singular requirements and assign each one a primary category.
+
+\section{Review Rules}
+Reject a requirement row if its priority, status, use-case mapping, or test-case
+mapping is empty. The \textbf{Status} field shall contain Open, In Progress,
+Done, or Retired. The \textbf{In Version} field shall follow
+\hyperref[Table:RequirementStatusDefinitions]{the status definitions}. Confirm
+that reciprocal mappings appear in the user-story, use-case, test,
+traceability, and verification registers.
+
+\begin{landscape}
+\small
+\section{Category-Specific Requirement Registers}
+The seven registers below are the template's default working set. They are
+selected for practical review and ownership, not as seven mutually exclusive
+top-level families. For example, the Security Requirements Register is a
+specialized quality-requirement register. Add, rename, combine, or remove
+registers to match the approved project taxonomy. Every retained register shall
+use the same traceability columns.
+
+\subsection{Business Requirements}
+\index{requirement!business}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Business Requirements Register\label{Table:BusinessRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Business Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\RequirementID{REQ-B-001} & The system shall make research artifacts such as data, the research paper, and simulation code publicly available. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-001} &
+\UseCaseRef{UC-001} & \TestCaseRef{TC-009} \\
+
+
+\hline
+\RequirementID{REQ-B-002} & The system shall track experiments and their results. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-016} &
+\UseCaseRef{UC-007} & \TestCaseRef{TC-014} \\
+\hline
+\RequirementID{REQ-B-003} & The system shall explain the fundamental concepts of the field that are relevant to the research. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-003} &
+\UseCaseRef{UC-002} & \TestCaseRef{TC-015} \\
+\hline
+\RequirementID{REQ-B-004} & The system shall explain key figures in depth. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-003} &
+\UseCaseRef{UC-003} & \TestCaseRef{TC-016} \\
+\hline
+\RequirementID{REQ-B-005} & The system shall explain how to reproduce the research & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-004} &
+\UseCaseRef{UC-004} & \TestCaseRef{TC-017} \\
+\end{tabularx}
+
+\clearpage
+\subsection{Functional Requirements}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Functional Requirements Register\label{Table:FunctionalRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Functional Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\RequirementID{REQ-F-001} & The system shall have a wiki where researchers can define concepts relevant to their research & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-002} &
+\UseCaseRef{UC-002} & \TestCaseRef{TC-018}\\
+
+\RequirementID{REQ-F-002} & The system shall contain a log of research progress & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-016} &
+\UseCaseRef{UC-007} & \TestCaseRef{TC-019}\\
+
+\RequirementID{REQ-F-003} & The system shall be able to find papers from DOIs & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-020} &
+\UseCaseRef{UC-005}, \UseCaseRef{UC-009} & \TestCaseRef{TC-006}\\
+
+\RequirementID{REQ-F-004} & The system shall be able to identify the authors of a paper. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-014}, \UserStoryRef{US-020},
+\UserStoryRef{US-022}&
+\UseCaseRef{UC-009} & \TestCaseRef{TC-006}\\
+
+\RequirementID{REQ-F-005} & The system shall be able to verify that a user is the author of a paper. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-014}, \UserStoryRef{US-020},
+\UserStoryRef{US-022}&
+\UseCaseRef{UC-009} & \TestCaseRef{TC-006}\\
+
+\RequirementID{REQ-F-006} & The system shall be able to parse a paper to autofill content fields & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-014}, \UserStoryRef{US-020},
+\UserStoryRef{US-022}&
+\UseCaseRef{UC-009} & \TestCaseRef{TC-006}\\
+
+%\RequirementID{REQ-F-003} & The system shall  & \gls{would} & \ReqStatusOpen & \NoVersion & \UseCaseRef{UC-003} & \TestCaseRef{TC-003}\\
+\end{tabularx}
+
+\subsection{Quality Requirements}
+\index{requirement!quality}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Quality Requirements Register\label{Table:QualityRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Quality Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\RequirementID{REQ-Q-001} & The system shall allow users to upload, view, and manage research artifacts through a standard web browser without requiring programming knowledge. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-008} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-010}\\
+
+\RequirementID{REQ-Q-002} & The system shall maintain a timestamped version history for each research artifact to support traceability and reproducibility. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-015} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-002}\\
+
+\RequirementID{REQ-Q-003} & The system shall preserve the contents of uploaded research artifacts without modification when the artifacts are stored or retrieved. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-001} &
+\UseCaseRef{UC-001}, \UseCaseRef{UC-005} & \TestCaseRef{TC-003}\\
+
+\RequirementID{REQ-Q-004} & The system shall allow users to retrieve a stored research artifact within five seconds under the reference workload. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-001} &
+\UseCaseRef{UC-001} & \TestCaseRef{TC-024}\\
+
+\RequirementID{REQ-Q-005} & The system shall provide access to research project documentation and artifacts to authorized users without requiring modification of the original research paper. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-001} &
+\UseCaseRef{UC-001}, \UseCaseRef{UC-005} & \TestCaseRef{TC-025}\\
+
+\RequirementID{REQ-Q-006} & The system shall provide search results within 5 seconds. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-021} & \UseCaseRef{UC-001} & \\
+
+\RequirementID{REQ-Q-007} & The system shall be available to handle 10,000 concurrent users accessing the website. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-021} & \UseCaseRef{UC-001} &\\
+
+\RequirementID{REQ-Q-009} & The system shall allow users to find projects within 5 inputs. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-021} & \UseCaseRef{UC-001} &\\
+
+
+\end{tabularx}
+
+\clearpage
+\subsection{Interface Requirements}
+\index{requirement!interface}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Interface Requirements Register\label{Table:InterfaceRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Interface Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\RequirementID{REQ-I-001} & The system shall provide browser-based controls that allow a researcher to upload and edit research artifacts without writing code or installing local tools. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-008} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-029}\\
+
+\RequirementID{REQ-I-002} & The system shall provide user-interface controls for uploading and displaying video research artifacts within a research project. & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-009} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-020}\\
+\end{tabularx}
+
+\subsection{Security Requirements}
+\index{requirement!security}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Security Requirements Register\label{Table:SecurityRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Security Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\RequirementID{REQ-S-001} & The system shall require authorization before a user can create, edit, or delete research artifacts. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-008} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-030}\\
+
+\RequirementID{REQ-S-002} & The system shall only allow whitelisted accounts to manage and edit paper materials. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-009} &
+\UseCaseRef{UC-005}, \UseCaseRef{UC-008} & \TestCaseRef{TC-004}\\
+
+\RequirementID{REQ-S-003} & The system shall allow users to log into their account with a password. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-009} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-021}\\
+
+\RequirementID{REQ-S-004} & The system shall allow users without accounts to view papers. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-009} &
+\UseCaseRef{UC-001} & \TestCaseRef{TC-022}\\
+
+\RequirementID{REQ-S-005} & The system shall provide a way for users to recover their account if they forgot their password & \gls{should} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-009} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-023}\\
+
+\end{tabularx}
+
+\clearpage
+\subsection{Data Requirements}
+\index{requirement!data}
+
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Data Requirements Register\label{Table:DataRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+
+\multicolumn{8}{l}{\small\itshape Data Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\RequirementID{REQ-D-001} &
+The system shall allow users to upload Docker images, code, images, and videos. &
+\gls{must} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-001}&
+\UseCaseRef{UC-005} &
+\TestCaseRef{TC-001}\\
+
+\RequirementID{REQ-D-003} &
+The system shall associate each output dataset with a unique identifier corresponding to the parameters and assumptions that produced it. &
+\gls{should} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-003}&
+\UseCaseRef{UC-007} &
+\TestCaseRef{TC-026}\\
+
+\RequirementID{REQ-D-004} &
+The system shall record metadata describing the software version, simulation code version, configuration, and computational environment used to generate each dataset. &
+\gls{should} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-004} &
+\UseCaseRef{UC-004}, \UseCaseRef{UC-005}, \UseCaseRef{UC-007} &
+\TestCaseRef{TC-027}\\
+
+\RequirementID{REQ-D-005} &
+The system shall record the processing and analysis procedures used to transform raw simulation data into derived results. &
+\gls{should} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-003} &
+\UseCaseRef{UC-003}, \UseCaseRef{UC-004}, \UseCaseRef{UC-005} &
+\TestCaseRef{TC-028}\\
+
+\RequirementID{REQ-D-006} &
+The system shall retain sufficient data and metadata for another researcher to reproduce a documented simulation and its associated analysis. &
+\gls{must} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-004} &
+\UseCaseRef{UC-004}, \UseCaseRef{UC-005} &
+\TestCaseRef{TC-011}\\
+
+\RequirementID{REQ-D-007} &
+The system shall allow researchers to upload DOIs of their previous work and autofill information for a paper on the platform. &
+\gls{must} &
+\ReqStatusOpen &
+\NoVersion &
+\UserStoryRef{US-020}&
+\UseCaseRef{UC-009} &
+\TestCaseRef{TC-005}\\
+
+\RequirementID{REQ-D-008} &
+The system shall allow users to upload a maximum of 1GB of data, including the paper and figures. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-020} &
+\UseCaseRef{UC-005} & 
+\TestCaseRef{TC-007}\\
+
+\end{tabularx}
+
+\subsection{Constraint Requirements}
+\index{requirement!constraint}
+\begin{tabularx}{\linewidth}
+{L{2.0cm}YL{1.7cm}L{2.0cm}L{1.4cm}L{2.2cm}L{2.2cm}L{2.2cm}}
+
+\caption{Constraint Requirements Register\label{Table:ConstraintRequirements}}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{\small\itshape Constraint Requirements Register (continued)}\\
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Priority} & \textbf{Status} & \textbf{In Version} & \textbf{User Stories} & \textbf{Use Case(s)} & \textbf{Test Case(s)}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{\small\itshape Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\RequirementID{REQ-C-001} & The system shall support the deployment platform and browser versions identified in the approved deployment baseline. & \gls{must} & \ReqStatusDone & 1.0 & \UserStoryRef{US-001}, \UserStoryRef{US-002}, \UserStoryRef{US-003} &
+\UseCaseRef{UC-001}, \UseCaseRef{UC-002}, \UseCaseRef{UC-003}, \UseCaseRef{UC-004}, \UseCaseRef{UC-005}, \UseCaseRef{UC-007}, \UseCaseRef{UC-008}, \UseCaseRef{UC-009} & \TestCaseRef{TC-008}\\
+
+\RequirementID{REQ-C-002} & The system shall operate as a browser-based application without requiring users to install a native client application or development tools. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-008} &
+\UseCaseRef{UC-005} & \TestCaseRef{TC-012}\\
+
+\RequirementID{REQ-C-003} & The system shall provide the same core research-project functions across the operating-system and browser combinations in the approved deployment baseline. & \gls{must} & \ReqStatusOpen & \NoVersion & \UserStoryRef{US-018}, \UserStoryRef{US-019} &
+\UseCaseRef{UC-001}, \UseCaseRef{UC-005} & \TestCaseRef{TC-013}\\
+\end{tabularx}
+\end{landscape}
+
+\subsection{Dynamo Tech Stack Diagram}
+\begin{figure}[h]
+    \includegraphics[width=0.88\textwidth]{eps/Deployment_Diagram1.eps}
+    \caption{Dynamo technology stack.
+    \label{Figure:TechnologyStackDiagram}}
+\end{figure}
+\index{Technology Stack Diagram}

@@ -1,0 +1,21 @@
+digraph CreateTaskActivity {
+  graph [bgcolor="white", pad="0.25", ranksep="0.45", splines="polyline"];
+  node [shape="box", style="rounded,filled", fontname="Helvetica", fontsize="10", color="#1f4e79", fillcolor="#e8f0f7"];
+  edge [fontname="Helvetica", fontsize="9", color="#546e7a", arrowsize="0.7"];
+
+  start [shape="circle", width="0.20", fixedsize="true", label="", style="filled", fillcolor="#263238", color="#263238"];
+  enter [label="Enter title, estimate,\nand priority"];
+  submit [label="Submit task"];
+  valid [shape="diamond", label="Inputs\nvalid?", style="filled", fillcolor="#fff4df", color="#9a6700"];
+  error [label="Show adjacent\nvalidation error", fillcolor="#fdecec", color="#b71c1c"];
+  create [label="Create Pending task"];
+  save [label="Save task data"];
+  render [label="Render list and progress"];
+  end [shape="doublecircle", width="0.24", fixedsize="true", label="", style="filled", fillcolor="#263238", color="#263238"];
+
+  start -> enter -> submit -> valid;
+  valid -> error [label=" no"];
+  error -> enter;
+  valid -> create [label=" yes"];
+  create -> save -> render -> end;
+}

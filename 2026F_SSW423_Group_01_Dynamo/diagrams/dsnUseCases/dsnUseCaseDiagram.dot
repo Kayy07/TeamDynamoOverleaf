@@ -1,0 +1,24 @@
+digraph UseCases {
+  graph [bgcolor="white", pad="0.25", nodesep="0.6", ranksep="0.6", splines="spline"];
+  node [fontname="Helvetica", fontsize="10", color="#1f4e79"];
+  edge [color="#546e7a", arrowsize="0.7", dir="none"];
+
+  customer [shape="box", style="rounded,filled", fillcolor="#f7f7f7", label="Customer"];
+  analyst [shape="box", style="rounded,filled", fillcolor="#f7f7f7", label="Operations Analyst"];
+
+  subgraph cluster_system {
+    label="[Project Name] System";
+    fontname="Helvetica-Bold";
+    fontsize="11";
+    color="#1f4e79";
+    style="rounded";
+    margin="20";
+    submit [shape="ellipse", style="filled", fillcolor="#e8f0f7", label="UC-001\nSubmit a Service Request"];
+    status [shape="ellipse", style="filled", fillcolor="#e8f0f7", label="UC-002\nView Request Status"];
+    export [shape="ellipse", style="filled", fillcolor="#e8f0f7", label="UC-003\nExport Request History"];
+  }
+
+  customer -> submit;
+  customer -> status;
+  analyst -> export;
+}

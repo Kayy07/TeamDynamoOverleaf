@@ -1,0 +1,14 @@
+digraph LogicalView {
+  graph [bgcolor="white", pad="0.25", nodesep="0.55", ranksep="0.65", splines="polyline"];
+  node [shape="record", style="filled", fontname="Helvetica", fontsize="9", color="#1f4e79", fillcolor="#e8f0f7", margin="0.10"];
+  edge [fontname="Helvetica", fontsize="9", color="#546e7a", arrowsize="0.7"];
+
+  planner [label="{PlannerState|tasks : Task[*]\lactiveTaskId : string?\ltimer : TimerState\l}"];
+  task [label="{Task|id : string\ltitle : string\lestimateMinutes : integer\lpriority : High | Medium | Low\lstatus : Pending | Complete\l}"];
+  timer [label="{TimerState|mode : Stopped | Running | Paused\ldurationSeconds : integer\lremainingSeconds : integer\ltargetTime : number?\l}"];
+  storage [label="{StorageRecord|schemaVersion : 1\ltasks : Task[*]\l}", fillcolor="#fff4df", color="#9a6700"];
+
+  planner -> task [label=" contains", arrowhead="diamond"];
+  planner -> timer [label=" owns", arrowhead="diamond"];
+  storage -> task [label=" serializes", style="dashed"];
+}

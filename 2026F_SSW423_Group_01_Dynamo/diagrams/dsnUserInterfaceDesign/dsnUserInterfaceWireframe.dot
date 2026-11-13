@@ -1,0 +1,15 @@
+digraph UIWireframe {
+  graph [bgcolor="white", pad="0.20"];
+  node [shape="plain", fontname="Helvetica", fontsize="10"];
+  page [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="10" COLOR="#1f4e79">
+      <TR><TD COLSPAN="2" BGCOLOR="#1f4e79"><FONT COLOR="white"><B>STUDY SPRINT PLANNER</B></FONT></TD></TR>
+      <TR><TD COLSPAN="2" ALIGN="LEFT" BGCOLOR="#f7f7f7"><B>Progress:</B> 1 of 3 tasks complete</TD></TR>
+      <TR>
+        <TD ALIGN="LEFT" VALIGN="TOP"><B>Add a task</B><BR ALIGN="LEFT"/>Title [________________]<BR ALIGN="LEFT"/>Estimate [25] minutes<BR ALIGN="LEFT"/>Priority [High v]<BR ALIGN="LEFT"/>[ Add Task ]</TD>
+        <TD ALIGN="LEFT" VALIGN="TOP"><B>Focus timer</B><BR ALIGN="LEFT"/>Review algebra<BR ALIGN="LEFT"/><FONT POINT-SIZE="20"><B>24:18</B></FONT><BR ALIGN="LEFT"/>[ Pause ] [ Reset ]</TD>
+      </TR>
+      <TR><TD COLSPAN="2" ALIGN="LEFT"><B>Tasks</B><BR ALIGN="LEFT"/>[ ] Review algebra | 25 min | High | [Start] [Delete]<BR ALIGN="LEFT"/>[x] Read chapter 4 | 20 min | Medium | [Delete]</TD></TR>
+    </TABLE>
+  >];
+}
