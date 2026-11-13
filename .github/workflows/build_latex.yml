@@ -20,10 +20,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check LaTeX class file
+      
+      - name: Diagnose LaTeX class file
         run: |
-          find 2026F_SSW423_Group_01_Dynamo \
-            -name "cornell.cls" -print
+          echo "Current directory:"
+          pwd
+
+          echo "Searching repository for cornell.cls:"
+          find . -type f -iname "cornell.cls" -print
+
+          echo "Checking tracked Git files:"
+          git ls-files | grep -i "cornell.cls" || true
+
+          echo "Contents of project directory:"
+          ls -la 2026F_SSW423_Group_01_Dynamo/
+
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
