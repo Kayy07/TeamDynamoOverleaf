@@ -5,11 +5,9 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
   workflow_dispatch:
 
 jobs:
@@ -40,6 +38,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: 2026F_SSW423_Group_01_Dynamo/SeniorDesignReportTemplate.tex
+          work_in_root_file_dir: true
           latexmk_use_xelatex: false
 
       - name: Upload compiled PDF
