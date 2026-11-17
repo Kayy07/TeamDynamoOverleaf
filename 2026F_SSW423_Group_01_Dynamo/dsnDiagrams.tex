@@ -26,8 +26,8 @@ The permission-management activity supports
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{eps/dsnUseCases/ManageCollaborationAndAccessActivityDiagram.eps}
-\caption{Manage Collaboration And Access Use Case Diagram. \label{Figure:ManageCollaborationAndAccessUseCaseDiagram}}
+\includegraphics[width=0.5\textwidth]{png/Manage Collaboration & Access.png}
+\caption{Manage Collaboration and Access Activity Diagram. \label{Figure:ManageCollaborationAndAccessActivityDiagram}}
 \end{figure}
 \index{use case diagram}
 
@@ -43,10 +43,10 @@ Supports
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{eps/dsnUseCases/UploadDocumentActivityDiagram.eps}
-\caption{Register a Published Paper Using a DOI Use Case Diagram.\label{Figure:DOIUploadUseCaseDiagram}}
+\includegraphics[width=0.8\textwidth,height=0.87\textheight,keepaspectratio]{png/Published Paper Using DOI.png}
+\caption{Register a Published Paper Using a DOI Activity Diagram.\label{Figure:DOIUploadActivityDiagram}}
 \end{figure}
-\index{use case diagram}
+\index{activity diagram}
 
 \clearpage
 
@@ -87,35 +87,25 @@ and version-history creation.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth,height=0.68\textheight,keepaspectratio]{png/UC-005ActivityDiagram.png}
+\includegraphics[width=0.8\textwidth,height=0.73\textheight,keepaspectratio]{png/UC-005ActivityDiagram.png}
 \caption{UC-005 Manage Research Artifacts Activity Diagram}
 \label{fig:uc005-activity}
 \end{figure}
 
 \clearpage
 
-\subsection{Component Diagram}
+\subsection{MVC Diagram}
 
-The component diagram shows the React frontend,
-Node.js and Express backend, authentication and
-authorization, version management, ScyllaDB,
-and file storage.
+The MVC diagram shows how the main parts of Dynamo are organized and connected. The View layer contains the React Frontend, where users can access the hompage, File Repository, and file upload popup. The Controller layer contains the planned Node.js and Express backend, which handles requests, user permissions, and file management. The Model layer includes ScyllaDB for storing research information and version history, along with Docker file storage for research files. 
+
+Backened integration is still in progress, and the classes for Authentication and Authorization still need to be defined.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth,height=0.70\textheight,keepaspectratio]{png/UC-005 Component Diagram.png}
-\caption{UC-005 Manage Research Artifacts Component Diagram}
+\includegraphics[width=0.95\textwidth,height=0.70\textheight,keepaspectratio]{png/MVC Architecture Diagram.png}
+\caption{MVC Architecture Diagram}
 \label{fig:uc005-component}
 \end{figure}
 \newpage
-\subsection{MVC Diagram}
-
-This diagram shows the interaction between the View, Controller, and Model of the platform
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.35\textwidth]{eps/MVC_Diagram.eps}
-\caption{MVC diagram of the Dynamo platform. \label{Figure:MVCDiagram}}
-\end{figure}
-\index{MVC Diagram}
 
 \clearpage
